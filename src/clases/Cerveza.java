@@ -61,7 +61,9 @@ public class Cerveza extends Articulo implements Alcoholico{
 
 	@Override
 	public void visualizarAticulo() {
-		// TODO Auto-generated method stub
+		System.out.println("name = " + super.name + ", code = " + super.code + ", mark = " + super.mark + ", capacidadBotella = " 
+				+ super.capacidadBotella + ", precio = " + super.precio + ", stock = " + super.stock + 
+				", origen = " + origen + ", cereales = " + cereales + ", gradosAlcohol = " + gradosAlcohol);
 		
 	}
 
