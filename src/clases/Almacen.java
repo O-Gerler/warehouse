@@ -102,12 +102,26 @@ public class Almacen {
 		ArrayList<Articulo> articulosOrdenados = (ArrayList<Articulo>) articulos.clone();
 		
 		if (orden.equals("descendente")) {
-			articulosOrdenados.sort(new CompararPorOrdenDescendente());
+			articulosOrdenados.sort(new CompararPrecioPorOrdenDescendente());
 		}else {
-			articulosOrdenados.sort(new CompararPorOrdenAscendete());
+			articulosOrdenados.sort(new CompararPrecioPorOrdenAscendete());
 		}
 		
 		return articulosOrdenados;
+	}
+	
+	private void ordenarPorStock(String orden) {
+		ArrayList<Articulo> articulosOrdenados = (ArrayList<Articulo>) articulos.clone();
+		
+		if (orden.equals("descendente")) {
+			articulosOrdenados.sort(new CompararStockPorOrdenDescendente());
+		}else {
+			articulosOrdenados.sort(new CompararStockPorOrdenAscendente());
+		}
+		
+		for (Articulo articulo : articulosOrdenados) {
+			articulo.visualizarAticulo();
+		}
 	}
 
 }
