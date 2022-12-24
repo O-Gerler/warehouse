@@ -1,6 +1,6 @@
 package clases;
 
-public class Articulo {
+public abstract class Articulo {
 	private String name;
 	private String code;
 	private String mark;
@@ -70,12 +70,9 @@ public class Articulo {
 		}
 	}
 	
-	public void visualizarAticulo() {
-		System.out.println("name = " + name + ", code = " + code + ", mark = " + mark + ", capacidadBotella = " + capacidadBotella
-				+ ", precio = " + precio + ", stock = " + stock);
-	}
+	public abstract void visualizarAticulo();
 	
-	public void precioTotal() {
-		System.out.println("El precio total del articulo es: " + (this.precio * this.stock));
-	}
+	public abstract void precioTotal();
+	
+	public abstract void esSaludable();
 }
