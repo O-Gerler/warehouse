@@ -75,7 +75,7 @@ public class Vino extends Articulo implements Alcoholico{
 
 	@Override
 	public double calcularTasa() {
-		// TODO Auto-generated method stub
+		// La tasa en vinos es 0
 		return 0;
 	}
 
