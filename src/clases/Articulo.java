@@ -74,4 +74,8 @@ public class Articulo {
 		System.out.println("name = " + name + ", code = " + code + ", mark = " + mark + ", capacidadBotella = " + capacidadBotella
 				+ ", precio = " + precio + ", stock = " + stock);
 	}
+	
+	public void precioTotal() {
+		System.out.println("El precio total del articulo es: " + (this.precio * this.stock));
+	}
 }
