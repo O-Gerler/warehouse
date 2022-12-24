@@ -7,6 +7,20 @@ public class Refresco extends Articulo{
 	private boolean gaseoso;
 	private int cantidadAzucar;
 
+	public Refresco() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Refresco(String name, String code, String mark, int capacidadBotella, double precio, int stock
+			, String sabor, boolean zumo, boolean gaseoso, int cantidadAzucar) {
+		super(name, code, mark, capacidadBotella, precio, stock);
+		this.sabor = sabor;
+		this.zumo = zumo;
+		this.gaseoso = gaseoso;
+		this.cantidadAzucar = cantidadAzucar;
+	}
+
 	public String getSabor() {
 		return sabor;
 	}
