@@ -35,4 +35,10 @@ public class LineaFactura {
 	public double precioTotal() {
 		return this.articulo.getPrecio() * this.cantidad;
 	}
+
+	@Override
+	public String toString() {
+		return "numero=" + numero + ", articulo=" + articulo + ", cantidad=" + cantidad + ", precioTotal()="
+				+ precioTotal();
+	}
 }
