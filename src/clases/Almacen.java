@@ -1,6 +1,7 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Almacen {
 	private ArrayList<Articulo> articulos = new ArrayList<>();
@@ -96,4 +97,17 @@ public class Almacen {
 		
 		return articulosEquivalentes;
 	}
+	
+	public ArrayList<Articulo> ordenarPorPrecio(String orden) {
+		ArrayList<Articulo> articulosOrdenados = (ArrayList<Articulo>) articulos.clone();
+		
+		if (orden.equals("descendente")) {
+			articulosOrdenados.sort(new CompararPorOrdenDescendente());
+		}else {
+			articulosOrdenados.sort(new CompararPorOrdenAscendete());
+		}
+		
+		return articulosOrdenados;
+	}
+
 }
