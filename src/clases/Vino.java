@@ -81,14 +81,15 @@ public class Vino extends Articulo implements Alcoholico{
 
 	@Override
 	public void visualizarAticulo() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("name = " + super.name + ", code = " + super.code + ", mark = " + super.mark + ", capacidadBotella = " 
+				+ super.capacidadBotella + ", precio = " + super.precio + ", stock = " + super.stock + 
+				"color = " + color + ", origen = " + origen + ", anio = " + anio + ", tipoUva = " + tipoUva
+				+ ", gradosAlcohol = " + gradosAlcohol);
 	}
 
 	@Override
 	public void precioTotal() {
 		System.out.println("El precio total es: " + (super.stock * super.precio));
-		
 	}
 
 	@Override
