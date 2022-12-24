@@ -2,6 +2,7 @@ package clases;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Factura {
@@ -69,6 +70,7 @@ public class Factura {
 				lineaFactura.setCantidad(cantidadArticulo);
 				lineaFacturas.add(lineaFactura);
 				System.out.println("Linea agregada");
+				numLinea++;
 			}else {
 				agregarLinea = false;
 			}
@@ -111,5 +113,17 @@ public class Factura {
 		return null;
 	}
 	
-	
+	public void eliminarLinea(int numeroLinea, Scanner sc) {
+		System.out.println("La linea que quieres borrar es: ");
+		Iterator<LineaFactura> it = lineaFacturas.iterator();
+		while (it.hasNext()) {
+			LineaFactura lineaFactura = it.next();
+			if (lineaFactura.getNumero() == numeroLinea) {
+				System.out.print("Desea continuar con la compra[S/n]: ");
+				String continuarCompra = sc.nextLine();
+				if (!continuarCompra.toLowerCase().equals("n"))
+					it.remove();
+			}
+		}
+	}
 }
