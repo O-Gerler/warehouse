@@ -2,7 +2,7 @@ package clases;
 
 import java.util.Comparator;
 
-public class CompararPorOrdenAscendete implements Comparator<Articulo>{
+public class CompararPrecioPorOrdenAscendete implements Comparator<Articulo>{
 
 	@Override
 	public int compare(Articulo arg0, Articulo arg1) {
