@@ -54,7 +54,7 @@ public class Cerveza extends Articulo implements Alcoholico{
 
 	@Override
 	public void precioTotal() {
-		// TODO Auto-generated method stub
+		System.out.println("El precio total es: " + (super.stock * super.precio));
 		
 	}
 
