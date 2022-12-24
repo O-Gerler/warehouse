@@ -33,4 +33,14 @@ public class Almacen {
 		
 		return 0;
 	}
+	
+	public boolean hayStock(String codigoProducto) {
+		for (Articulo articulo : articulos) {
+			if (codigoProducto.equals(articulo.getCode()) && articulo.getStock() > 0) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }
