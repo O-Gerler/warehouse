@@ -38,7 +38,7 @@ public class LineaFactura {
 
 	@Override
 	public String toString() {
-		return "numero=" + numero + ", articulo=" + articulo + ", cantidad=" + cantidad + ", precioTotal()="
-				+ precioTotal();
+		return "numero=" + numero + ", cantidad=" + cantidad + ", precioTotal()="
+				+ precioTotal() + ", articulo=" + articulo.getName();
 	}
 }
