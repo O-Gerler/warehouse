@@ -34,7 +34,9 @@ public class Cerveza extends Articulo implements Alcoholico{
 
 	@Override
 	public boolean esFuerte() {
-		// TODO Auto-generated method stub
+		if (this.gradosAlcohol > 7) 
+			return true;
+		
 		return false;
 	}
 
