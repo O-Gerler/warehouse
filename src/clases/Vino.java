@@ -9,6 +9,21 @@ public class Vino extends Articulo implements Alcoholico{
 	private int anio;
 	private String tipoUva;
 	private double gradosAlcohol;
+	
+	public Vino() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Vino(String name, String code, String mark, int capacidadBotella, double precio, int stock,
+			String color, String origen, int anio, String tipoUva, double gradosAlcohol) {
+		super(name, code, mark, capacidadBotella, precio, stock);
+		this.color = color;
+		this.origen = origen;
+		this.anio = anio;
+		this.tipoUva = tipoUva;
+		this.gradosAlcohol = gradosAlcohol;
+	}
 
 	public String getColor() {
 		return color;
