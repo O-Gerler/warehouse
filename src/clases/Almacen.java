@@ -10,4 +10,19 @@ public class Almacen {
 	public void cargarDatos() {
 		//con un fichero
 	}
+	
+	public Articulo mostrarMasCaro() {
+		double price = 0;
+		Articulo articulo = null;
+	
+		for (Articulo art : articulos) {
+		if (price < art.getPrecio()) {
+			articulo = art;
+			price = art.getPrecio();
+		}
+	}
+		
+		
+		return articulo;
+	}
 }
