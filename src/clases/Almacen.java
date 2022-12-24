@@ -8,6 +8,10 @@ public class Almacen {
 
 	public Almacen() {}
 	
+	public ArrayList<Articulo> getArticulos() {
+		return articulos;
+	}
+
 	public void cargarDatos() {
 		//con un fichero
 	}
