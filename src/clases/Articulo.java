@@ -56,5 +56,7 @@ public class Articulo {
 		this.stock = stock;
 	}
 	
-	
+	public void incrementarStock() {
+		this.stock = this.stock + 1;
+	}
 }
