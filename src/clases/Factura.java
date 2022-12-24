@@ -138,4 +138,14 @@ public class Factura {
 		
 		numLinea = numeroNuevo;
 	}
+	
+	public double precioTotal() {
+		float precioTotal = 0;
+		
+		for (LineaFactura lineaFactura : lineaFacturas) {
+			precioTotal += (lineaFactura.getArticulo().getPrecio() * lineaFactura.getCantidad());
+		}
+		
+		return precioTotal();
+	}
 }
