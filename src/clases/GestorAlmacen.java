@@ -10,9 +10,7 @@ public class GestorAlmacen {
 		
 	}
 	
-	private Factura crearFacturaConDatos(Almacen almacen, Scanner sc) {
-		LineaFactura lineaFactura = new LineaFactura();
-		
+	private Factura crearFacturaConDatos(Scanner sc) {
 		int numFactura = pedirNumero(sc);
 		System.out.print("Introduce el nombre de la empresa: ");
 		String nombreEmpresa = sc.nextLine().trim();
