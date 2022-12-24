@@ -55,4 +55,16 @@ public class Almacen {
 		
 		return articulosStockJusto;
 	}
+	
+	public Articulo articulo(String codigoArticulo) {
+		Articulo articulo = null;
+		
+		for (Articulo art : articulos) {
+			if (codigoArticulo.equals(art.getCode())) {
+				articulo = art;
+			}
+		}
+		
+		return articulo;
+	}
 }
