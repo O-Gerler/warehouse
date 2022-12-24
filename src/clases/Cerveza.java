@@ -42,7 +42,7 @@ public class Cerveza extends Articulo implements Alcoholico{
 
 	@Override
 	public double calcularTasa() {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 
@@ -60,7 +60,9 @@ public class Cerveza extends Articulo implements Alcoholico{
 
 	@Override
 	public boolean esSaludable() {
-		// TODO Auto-generated method stub
+		if(this.origen.trim().toLowerCase().equals("galicia"))
+			return true;
+		
 		return false;
 	}
 
