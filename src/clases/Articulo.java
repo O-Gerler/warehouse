@@ -57,6 +57,16 @@ public class Articulo {
 	}
 	
 	public void incrementarStock() {
-		this.stock = this.stock + 1;
+		this.stock += 1;
+	}
+	
+	public void disminuirStock(int cantidad) {
+		if (cantidad <= this.stock) {
+			this.stock -= cantidad;
+			System.out.println("El articulo " + this.name + " reducio su cantidad en " + cantidad 
+					+ " unidades, unidades restanes: " + this.stock);
+		}else {
+			System.out.println("No se ha podido disminuir la cantidad seleccionada");
+		}
 	}
 }
