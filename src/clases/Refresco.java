@@ -62,14 +62,16 @@ public class Refresco extends Articulo{
 
 	@Override
 	public void precioTotal() {
-		// TODO Auto-generated method stub
+		System.out.println("El precio total es: " + (super.precio * super.stock));
 		
 	}
 
 	@Override
-	public void esSaludable() {
-		// TODO Auto-generated method stub
+	public boolean esSaludable() {
+		if (this.cantidadAzucar < 20) 
+			return true;
 		
+		return false;
 	}
 	
 }
