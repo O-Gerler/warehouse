@@ -1,5 +1,7 @@
 package clases;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -41,7 +43,20 @@ public class Factura {
 		LineaFactura lineaFactura = new LineaFactura();
 		
 		int numFactura = pedirNumeroFactura(sc);
-		
+		System.out.print("Introduce el nombre de la empresa: ");
+		String nombreEmpresa = sc.nextLine().trim();
+		Date fecha = introducirFecha(sc);
+	}
+	private Date introducirFecha(Scanner sc) {
+		System.out.print("Introduce la fecha(yyyy/MM/dd): ");
+		String fechaIntroducida = sc.nextLine().trim();
+		Date fecha;
+		try {
+			fecha = new SimpleDateFormat("yyyy/MM/dd").parse(fechaIntroducida);
+		} catch (ParseException e) {
+			fecha = new Date();
+		}
+		return fecha;
 	}
 	private int pedirNumeroFactura(Scanner sc) {
 		int numFactura = 0;
