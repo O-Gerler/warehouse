@@ -1,12 +1,12 @@
 package clases;
 
 public abstract class Articulo {
-	private String name;
-	private String code;
-	private String mark;
-	private int capacidadBotella;
-	private double precio;
-	private int stock;
+	protected String name;
+	protected String code;
+	protected String mark;
+	protected int capacidadBotella;
+	protected double precio;
+	protected int stock;
 	
 	public Articulo() {};
 	
@@ -71,7 +71,7 @@ public abstract class Articulo {
 	}
 	
 	public abstract void visualizarAticulo();
-	
+
 	public abstract void precioTotal();
 	
 	public abstract void esSaludable();
