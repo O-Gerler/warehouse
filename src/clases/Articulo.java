@@ -8,6 +8,17 @@ public class Articulo {
 	private double precio;
 	private int stock;
 	
+	public Articulo() {};
+	
+	public Articulo(String name, String code, String mark, int capacidadBotella, double precio, int stock) {
+		this.name = name;
+		this.code = code;
+		this.mark = mark;
+		this.capacidadBotella = capacidadBotella;
+		this.precio = precio;
+		this.stock = stock;
+	}
+	
 	public String getName() {
 		return name;
 	}
