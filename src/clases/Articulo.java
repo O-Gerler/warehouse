@@ -74,5 +74,5 @@ public abstract class Articulo {
 
 	public abstract void precioTotal();
 	
-	public abstract void esSaludable();
+	public abstract boolean esSaludable();
 }
