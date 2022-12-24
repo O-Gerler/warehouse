@@ -43,4 +43,16 @@ public class Almacen {
 		
 		return false;
 	}
+	
+	public ArrayList<Articulo> stockJusto(int stock) {
+		ArrayList<Articulo> articulosStockJusto = new ArrayList<>();
+		
+		for (Articulo articulo : articulos) {
+			if (articulo.getStock() == stock) {
+				articulosStockJusto.add(articulo);
+			}
+		}
+		
+		return articulosStockJusto;
+	}
 }
