@@ -125,5 +125,17 @@ public class Factura {
 					it.remove();
 			}
 		}
+		reasignarNumeroDeLinea();
+	}
+
+	private void reasignarNumeroDeLinea() {
+		int numeroNuevo = 1;
+		
+		for (LineaFactura lineaFactura : lineaFacturas) {
+			lineaFactura.setNumero(numeroNuevo);
+			numeroNuevo++;
+		}
+		
+		numLinea = numeroNuevo;
 	}
 }
