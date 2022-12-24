@@ -69,4 +69,9 @@ public class Articulo {
 			System.out.println("No se ha podido disminuir la cantidad seleccionada");
 		}
 	}
+	
+	public void visualizarAticulo() {
+		System.out.println("name = " + name + ", code = " + code + ", mark = " + mark + ", capacidadBotella = " + capacidadBotella
+				+ ", precio = " + precio + ", stock = " + stock);
+	}
 }
