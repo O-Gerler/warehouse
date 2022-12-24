@@ -52,7 +52,7 @@ public class Factura {
 	public Factura crearFacturaConDatos(Almacen almacen, Scanner sc) {
 		LineaFactura lineaFactura = new LineaFactura();
 		
-		int numFactura = pedirNumeroFactura(sc);
+		int numFactura = pedirNumero(sc);
 		System.out.print("Introduce el nombre de la empresa: ");
 		String nombreEmpresa = sc.nextLine().trim();
 		Date fecha = introducirFecha(sc);
@@ -63,6 +63,7 @@ public class Factura {
 		
 		return factura;
 	}
+	
 	private Date introducirFecha(Scanner sc) {
 		System.out.print("Introduce la fecha(yyyy/MM/dd): ");
 		String fechaIntroducida = sc.nextLine().trim();
@@ -75,7 +76,7 @@ public class Factura {
 		return fecha;
 	}
 	
-	private int pedirNumeroFactura(Scanner sc) {
+	private int pedirNumero(Scanner sc) {
 		int numFactura = 0;
 		
 		do {
