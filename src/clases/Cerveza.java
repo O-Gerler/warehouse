@@ -8,6 +8,19 @@ public class Cerveza extends Articulo implements Alcoholico{
 	private String cereales;
 	private double gradosAlcohol;
 
+	public Cerveza(String name, String code, String mark, int capacidadBotella, double precio, int stock,
+			String origen, String cereales, double gradosAlcohol) {
+		super(name, code, mark, capacidadBotella, precio, stock);
+		this.origen = origen;
+		this.cereales = cereales;
+		this.gradosAlcohol = gradosAlcohol;
+	}
+
+	public Cerveza() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getOrigen() {
 		return origen;
 	}
