@@ -31,4 +31,8 @@ public class LineaFactura {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
+	
+	public double precioTotal() {
+		return this.articulo.getPrecio() * this.cantidad;
+	}
 }
