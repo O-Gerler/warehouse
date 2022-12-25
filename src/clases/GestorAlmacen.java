@@ -65,6 +65,7 @@ public class GestorAlmacen {
 				mostrarArticulosSaludables(almacen);
 				break;
 			case MAIN_MENU_VER_ARTICULO_MAS_CARO:
+				mostrarArticulosPorOrdenDePrecio(almacen, sc);
 				break;
 			case MAIN_MENU_VER_ARTICULOS_MENOS_STOCK:
 				break;
@@ -75,6 +76,31 @@ public class GestorAlmacen {
 			}
 		} while (opcionMainMenu != MAIN_MENU_SALIR);
 		
+	}
+
+	private void mostrarArticulosPorOrdenDePrecio(Almacen almacen, Scanner sc) {
+		String opcionTipoDeOrdenacionLista = elegirOrden(sc);
+		for (Articulo articulo : almacen.ordenarPorPrecio(opcionTipoDeOrdenacionLista)) {
+			mostrarPorTipoDeArticulo(articulo);
+		}
+	}
+
+	private void mostrarPorTipoDeArticulo(Articulo articulo) {
+		if (articulo instanceof Refresco) {
+			((Refresco) articulo).visualizarPropiedades();
+		}else if (articulo instanceof Cerveza) {
+			((Refresco) articulo).visualizarPropiedades();
+		}else if (articulo instanceof Vino) {
+			((Vino) articulo).visualizarAticulo();
+		}
+	}
+
+	private String elegirOrden(Scanner sc) {
+		System.out.print("Mostar lista en orden descendete[S/n]");
+		String opcionTipoDeOrdenacionLista = sc.nextLine();
+		opcionTipoDeOrdenacionLista = opcionTipoDeOrdenacionLista.trim().toLowerCase().equals("n") 
+									  ? "ascendente" : "descendente";
+		return opcionTipoDeOrdenacionLista;
 	}
 
 	private void mostrarArticulosSaludables(Almacen almacen) {
