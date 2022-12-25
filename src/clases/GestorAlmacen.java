@@ -98,7 +98,7 @@ public class GestorAlmacen {
 		if (articulo instanceof Refresco) {
 			((Refresco) articulo).visualizarPropiedades();
 		}else if (articulo instanceof Cerveza) {
-			((Refresco) articulo).visualizarPropiedades();
+			((Cerveza) articulo).visualizarAticulo();
 		}else if (articulo instanceof Vino) {
 			((Vino) articulo).visualizarAticulo();
 		}
