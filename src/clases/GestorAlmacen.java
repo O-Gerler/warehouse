@@ -119,8 +119,8 @@ public class GestorAlmacen {
 					((Refresco) articulo).visualizarPropiedades();
 				}
 			}else if (articulo instanceof Cerveza) {
-				if (((Refresco) articulo).esSaludable()) {
-					((Refresco) articulo).visualizarPropiedades();
+				if (((Cerveza) articulo).esSaludable()) {
+					((Cerveza) articulo).visualizarAticulo();
 				}
 			}else if (articulo instanceof Vino) {
 				if (((Vino) articulo).esSaludable()) {
