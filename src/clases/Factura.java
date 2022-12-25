@@ -168,7 +168,7 @@ public class Factura {
 		System.out.println("Precio total: " + precioTotal());
 	}
 	
-	public void guardarEnFichero() throws FileNotFoundException {
+	public void guardarEnFichero(Almacen almacen) throws FileNotFoundException {
 		String nombreFichero = generarNombreFichero();
 		File file = new File(nombreFichero);
 		
@@ -193,6 +193,14 @@ public class Factura {
 		pw.println("Precio total: " + precioTotal());
 		
 		pw.close();
+		
+		for (LineaFactura lineaFactura : lineaFacturas) {
+			for (Articulo articulo : almacen.getArticulos()) {
+				if (articulo.code.equals(lineaFactura.getArticulo().getCode())) {
+					articulo.disminuirStock(lineaFactura.getCantidad());
+				}
+			}
+		}
 	}
 
 	private String generarNombreFichero() {
