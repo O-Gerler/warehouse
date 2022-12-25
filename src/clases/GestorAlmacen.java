@@ -62,6 +62,7 @@ public class GestorAlmacen {
 			case MAIN_MENU_REALIZAR_COMPRA:
 				break;
 			case MAIN_MENU_VER_ARTICULOS_SALDABLES:
+				mostrarArticulosSaludables(almacen);
 				break;
 			case MAIN_MENU_VER_ARTICULO_MAS_CARO:
 				break;
@@ -74,6 +75,24 @@ public class GestorAlmacen {
 			}
 		} while (opcionMainMenu != MAIN_MENU_SALIR);
 		
+	}
+
+	private void mostrarArticulosSaludables(Almacen almacen) {
+		for (Articulo articulo : almacen.getArticulos()) {
+			if (articulo instanceof Refresco) {
+				if (((Refresco) articulo).esSaludable()) {
+					((Refresco) articulo).visualizarPropiedades();
+				}
+			}else if (articulo instanceof Cerveza) {
+				if (((Refresco) articulo).esSaludable()) {
+					((Refresco) articulo).visualizarPropiedades();
+				}
+			}else if (articulo instanceof Vino) {
+				if (((Vino) articulo).esSaludable()) {
+					((Vino) articulo).visualizarAticulo();
+				}
+			}
+		}
 	}
 	
 	private int elegirOpcion(int opcionMenu, Scanner sc) {
