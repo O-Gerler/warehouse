@@ -1,5 +1,8 @@
 package clases;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +16,8 @@ public class Factura {
 	private Date fecha;
 	private String concepto;
 	ArrayList<LineaFactura> lineaFacturas = new ArrayList<>();
-	private int numLinea = 0;
+	private int numLinea = 1;
+	private int numFichero = 1;
 	
 	public Factura() {
 		// TODO Auto-generated constructor stub
@@ -163,5 +167,38 @@ public class Factura {
 		}
 		System.out.println("---------------------------------------------------------------------");
 		System.out.println("Precio total: " + precioTotal());
+	}
+	
+	public void guardarEnFichero() throws FileNotFoundException {
+		String nombreFichero = generarNombreFichero();
+		File file = new File(nombreFichero);
+		
+		if (file.exists()) {
+			System.out.println("El archivo ya existe");
+			nombreFichero = String.valueOf(numFichero).concat(nombreFichero);
+			file = new File(nombreFichero);
+		}
+		
+		PrintWriter pw = new PrintWriter(file);
+		pw.println("-------------------------------FACTURA-------------------------------");
+		pw.println("Numero de factura: \t\t\t" + this.numero);
+		pw.println("Nombre de empresa: \t\t\t" + this.nombreEmpresa);
+		pw.println("Concepto de factura: \t\t\t" + this.concepto);
+		pw.println("Fecha: " + this.fecha != null ? new SimpleDateFormat("yyyy/MM/dd").format(this.fecha) : new Date());
+		pw.println("---------------------------------------------------------------------");
+		pw.println("\tNumero\t|\tCantidad\t|\tPrecio Total\t|\tArticulo\t\t|");
+		for (LineaFactura lineaFactura : lineaFacturas) {
+			pw.println(lineaFactura);
+		}
+		pw.println("---------------------------------------------------------------------");
+		pw.println("Precio total: " + precioTotal());
+		
+		
+	}
+
+	private String generarNombreFichero() {
+		String nombreFichero = this.numero + "_ "+ (this.fecha != null ? new SimpleDateFormat("yyyy/MM/dd").format(this.fecha) : new Date()) 
+				+"_factura.txt";
+		return nombreFichero;
 	}
 }
