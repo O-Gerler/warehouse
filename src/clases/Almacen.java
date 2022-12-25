@@ -1,7 +1,6 @@
 package clases;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Almacen {
 	private ArrayList<Articulo> articulos = new ArrayList<>();
