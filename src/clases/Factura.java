@@ -150,7 +150,7 @@ public class Factura {
 			precioTotal += (lineaFactura.getArticulo().getPrecio() * lineaFactura.getCantidad());
 		}
 		
-		return precioTotal();
+		return precioTotal;
 	}
 	
 	public void mostrarEnPantalla() {
@@ -192,7 +192,7 @@ public class Factura {
 		pw.println("---------------------------------------------------------------------");
 		pw.println("Precio total: " + precioTotal());
 		
-		
+		pw.close();
 	}
 
 	private String generarNombreFichero() {
