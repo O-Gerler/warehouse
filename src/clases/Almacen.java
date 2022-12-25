@@ -123,7 +123,13 @@ public class Almacen {
 		}
 		
 		for (Articulo articulo : articulosOrdenados) {
-			articulo.visualizarAticulo();
+			if (articulo instanceof Refresco) {
+				((Refresco) articulo).visualizarPropiedades();
+			}else if (articulo instanceof Cerveza) {
+				((Refresco) articulo).visualizarPropiedades();
+			}else if (articulo instanceof Vino) {
+				((Vino) articulo).visualizarAticulo();
+			}
 		}
 	}
 
