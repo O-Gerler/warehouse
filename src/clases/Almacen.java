@@ -113,7 +113,7 @@ public class Almacen {
 		return articulosOrdenados;
 	}
 	
-	private void ordenarPorStock(String orden) {
+	public void ordenarPorStock(String orden) {
 		ArrayList<Articulo> articulosOrdenados = (ArrayList<Articulo>) articulos.clone();
 		
 		if (orden.equals("descendente")) {
