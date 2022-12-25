@@ -1,12 +1,13 @@
 package clases;
 
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
 public class GestorAlmacen {
-	public void run() {
+	public void run() throws FileNotFoundException {
 		Almacen almacen = new Almacen();
 		almacen.cargarDatos();
 		
@@ -44,14 +45,19 @@ public class GestorAlmacen {
 					opcionMenuFactura = elegirOpcion(opcionMenuFactura, sc);
 					switch(opcionMenuFactura) {
 					case MENU_FACTURA_ADD_LINEA:
+						factura.addLinea(almacen, sc);
 						break;
 					case MENU_FACTURA_ELIMINAR_LINEA:
+						factura.eliminarLinea(opcionMenuFactura, sc);
 						break;
 					case MENU_FACTURA_MOSTRAR_EN_PANTALLA:
+						factura.mostrarEnPantalla();
 						break;
 					case MENU_FACTURA_GUARDAR_EN_FICHERO:
+						factura.guardarEnFichero(almacen);
 						break;
 					case MENU_FACTURA_SALIR:
+						System.out.println("Saliendo al menu pricipal...");
 						break;
 					default:
 						System.out.println("Introduce una opcion correcta");
