@@ -63,7 +63,7 @@ public class Factura {
 			do {
 				art = recibirCodigoArticulo(almacen, sc);
 			} while (recibirCodigoArticulo(almacen, sc) == null);
-			int cantidadArticulo = recibirCantidadArticulo(sc);
+			int cantidadArticulo = recibirCantidadArticulo(almacen,sc);
 			
 			System.out.println(lineaFactura);
 			System.out.print("Desea continuar con la compra[S/n]: ");
@@ -90,7 +90,7 @@ public class Factura {
 		}while(agregarLinea);
 	}
 
-	private int recibirCantidadArticulo(Scanner sc) {
+	private int recibirCantidadArticulo(Almacen almacen, Scanner sc) {
 		int cantidadArticulo = 0;
 		
 		do {
@@ -101,7 +101,7 @@ public class Factura {
 				System.out.println("ERROR!!!");
 				cantidadArticulo = -1;
 			}
-		} while (cantidadArticulo < 1);
+		} while (cantidadArticulo < 1 && !almacen.disponibilidad(concepto, cantidadArticulo));
 		
 		return cantidadArticulo;
 	}
