@@ -60,9 +60,7 @@ public class Factura {
 		
 		do {
 			LineaFactura lineaFactura = new LineaFactura();
-			do {
-				art = recibirCodigoArticulo(almacen, sc);
-			} while (recibirCodigoArticulo(almacen, sc) == null);
+			art = recibirCodigoArticulo(almacen, sc);
 			int cantidadArticulo = recibirCantidadArticulo(almacen,sc);
 			
 			System.out.println(lineaFactura);
