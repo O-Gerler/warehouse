@@ -28,11 +28,16 @@ public class GestorAlmacen {
 		int opicionMainMenu = -1;
 		
 		do {
+			mostrarOpcionesMainMenu(MAIN_MENU_REALIZAR_COMPRA, MAIN_MENU_REALIZAR_VENTA, MAIN_MENU_VER_ARTICULOS_SALDABLES,
+					MAIN_MENU_VER_ARTICULO_MAS_CARO, MAIN_MENU_VER_ARTICULOS_MENOS_STOCK,MAIN_MENU_SALIR);
 			switch(opicionMainMenu) {
 			case MAIN_MENU_REALIZAR_VENTA:
 				Factura factura = crearFacturaConDatos(sc);
 				int opcionMenuFactura = -1;
 				do {
+					mostrarOpcionesMenuFactura(MENU_FACTURA_ADD_LINEA, MENU_FACTURA_ELIMINAR_LINEA, 
+							MENU_FACTURA_MOSTRAR_EN_PANTALLA, MENU_FACTURA_GUARDAR_EN_FICHERO,
+							MENU_FACTURA_SALIR);
 					switch(opcionMenuFactura) {
 					case MENU_FACTURA_ADD_LINEA:
 						break;
@@ -67,6 +72,29 @@ public class GestorAlmacen {
 		
 	}
 	
+	private void mostrarOpcionesMenuFactura(int mENU_FACTURA_ADD_LINEA, int mENU_FACTURA_ELIMINAR_LINEA,
+			int mENU_FACTURA_MOSTRAR_EN_PANTALLA, int mENU_FACTURA_GUARDAR_EN_FICHERO, int mENU_FACTURA_SALIR) {
+		System.out.println("=====================MENU-FACTURA=====================");
+		System.out.println(mENU_FACTURA_ADD_LINEA + ".- Agregar linea de factura");
+		System.out.println(mENU_FACTURA_ELIMINAR_LINEA + ".- Eliminar linea de factura");
+		System.out.println(mENU_FACTURA_MOSTRAR_EN_PANTALLA + ".- Mostrar factura en pantalla");
+		System.out.println(mENU_FACTURA_GUARDAR_EN_FICHERO + ".- Guardar factura");
+		System.out.println(mENU_FACTURA_SALIR + ".- Salir");
+		
+	}
+
+	private void mostrarOpcionesMainMenu(int mAIN_MENU_REALIZAR_COMPRA, int mAIN_MENU_REALIZAR_VENTA, int mAIN_MENU_VER_ARTICULOS_SALDABLES,
+			int mAIN_MENU_VER_ARTICULO_MAS_CARO, int mAIN_MENU_VER_ARTICULO_MENOS_STOCK, int mAIN_MENU_SALIR) {
+		System.out.println("=====================MENU-PRINCPAL=====================");
+		System.out.println(mAIN_MENU_REALIZAR_COMPRA + ".- Realizar compra");
+		System.out.println(mAIN_MENU_REALIZAR_VENTA + ".- Realizar venta");
+		System.out.println(mAIN_MENU_VER_ARTICULOS_SALDABLES + ".- Ver articulos saludables");
+		System.out.println(mAIN_MENU_VER_ARTICULO_MAS_CARO + ".- Ordenar articulos por precio");
+		System.out.println(mAIN_MENU_VER_ARTICULO_MENOS_STOCK + ".- Ordenar articulos por stock");
+		System.out.println(mAIN_MENU_SALIR + ".- Salir");
+		
+	}
+
 	private Factura crearFacturaConDatos(Scanner sc) {
 		int numFactura = pedirNumero(sc);
 		System.out.print("Introduce el nombre de la empresa: ");
