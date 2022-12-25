@@ -60,6 +60,7 @@ public class GestorAlmacen {
 				} while (opcionMenuFactura != MENU_FACTURA_SALIR);
 				break;
 			case MAIN_MENU_REALIZAR_COMPRA:
+				System.out.println("Aun no esta preparado");
 				break;
 			case MAIN_MENU_VER_ARTICULOS_SALDABLES:
 				mostrarArticulosSaludables(almacen);
