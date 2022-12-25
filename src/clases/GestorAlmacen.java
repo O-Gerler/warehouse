@@ -25,12 +25,15 @@ public class GestorAlmacen {
 		final int MENU_FACTURA_GUARDAR_EN_FICHERO =4;
 		final int MENU_FACTURA_SALIR =0;
 		
-		int opicionMainMenu = -1;
+		int opcionMainMenu = -1;
 		
 		do {
 			mostrarOpcionesMainMenu(MAIN_MENU_REALIZAR_COMPRA, MAIN_MENU_REALIZAR_VENTA, MAIN_MENU_VER_ARTICULOS_SALDABLES,
 					MAIN_MENU_VER_ARTICULO_MAS_CARO, MAIN_MENU_VER_ARTICULOS_MENOS_STOCK,MAIN_MENU_SALIR);
-			switch(opicionMainMenu) {
+			opcionMainMenu = elegirOpcion(opcionMainMenu, sc);
+			
+			switch(opcionMainMenu) {
+			
 			case MAIN_MENU_REALIZAR_VENTA:
 				Factura factura = crearFacturaConDatos(sc);
 				int opcionMenuFactura = -1;
@@ -38,6 +41,7 @@ public class GestorAlmacen {
 					mostrarOpcionesMenuFactura(MENU_FACTURA_ADD_LINEA, MENU_FACTURA_ELIMINAR_LINEA, 
 							MENU_FACTURA_MOSTRAR_EN_PANTALLA, MENU_FACTURA_GUARDAR_EN_FICHERO,
 							MENU_FACTURA_SALIR);
+					opcionMenuFactura = elegirOpcion(opcionMenuFactura, sc);
 					switch(opcionMenuFactura) {
 					case MENU_FACTURA_ADD_LINEA:
 						break;
@@ -68,10 +72,25 @@ public class GestorAlmacen {
 			default:
 				System.out.println("Introduce una opcion correcta");
 			}
-		} while (opicionMainMenu != MAIN_MENU_SALIR);
+		} while (opcionMainMenu != MAIN_MENU_SALIR);
 		
 	}
 	
+	private int elegirOpcion(int opcionMenu, Scanner sc) {
+		
+		do {
+			System.out.print("Introduce la opcion: ");
+			try {
+				opcionMenu = Integer.parseInt(sc.nextLine());
+			} catch (Exception e) {
+				System.out.println("ERROR!!!");
+				opcionMenu = -1;
+			}
+		} while (opcionMenu > 0);
+		
+		return opcionMenu;
+	}
+
 	private void mostrarOpcionesMenuFactura(int mENU_FACTURA_ADD_LINEA, int mENU_FACTURA_ELIMINAR_LINEA,
 			int mENU_FACTURA_MOSTRAR_EN_PANTALLA, int mENU_FACTURA_GUARDAR_EN_FICHERO, int mENU_FACTURA_SALIR) {
 		System.out.println("=====================MENU-FACTURA=====================");
