@@ -12,33 +12,58 @@ public class GestorAlmacen {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		final int REALIZAR_VENTA =1;
-		final int REALIZAR_COMPRA =2;
-		final int VER_ARTICULOS_SALDABLES =3;
-		final int VER_ARTICULO_MAS_CARO =4;
-		final int VER_ARTICULOS_MENOS_STOCK =5;
-		final int SALIR =0;
+		final int MAIN_MENU_REALIZAR_VENTA =1;
+		final int MAIN_MENU_REALIZAR_COMPRA =2;
+		final int MAIN_MENU_VER_ARTICULOS_SALDABLES =3;
+		final int MAIN_MENU_VER_ARTICULO_MAS_CARO =4;
+		final int MAIN_MENU_VER_ARTICULOS_MENOS_STOCK =5;
+		final int MAIN_MENU_SALIR =0;
+		
+		final int MENU_FACTURA_ADD_LINEA =1;
+		final int MENU_FACTURA_ELIMINAR_LINEA =2;
+		final int MENU_FACTURA_MOSTRAR_EN_PANTALLA =3;
+		final int MENU_FACTURA_GUARDAR_EN_FICHERO =4;
+		final int MENU_FACTURA_SALIR =0;
 		
 		int opicionMainMenu = -1;
 		
 		do {
 			switch(opicionMainMenu) {
-			case REALIZAR_VENTA:
+			case MAIN_MENU_REALIZAR_VENTA:
+				Factura factura = crearFacturaConDatos(sc);
+				int opcionMenuFactura = -1;
+				do {
+					switch(opcionMenuFactura) {
+					case MENU_FACTURA_ADD_LINEA:
+						break;
+					case MENU_FACTURA_ELIMINAR_LINEA:
+						break;
+					case MENU_FACTURA_MOSTRAR_EN_PANTALLA:
+						break;
+					case MENU_FACTURA_GUARDAR_EN_FICHERO:
+						break;
+					case MENU_FACTURA_SALIR:
+						break;
+					default:
+						System.out.println("Introduce una opcion correcta");
+					}
+					
+				} while (opcionMenuFactura != MENU_FACTURA_SALIR);
 				break;
-			case REALIZAR_COMPRA:
+			case MAIN_MENU_REALIZAR_COMPRA:
 				break;
-			case VER_ARTICULOS_SALDABLES:
+			case MAIN_MENU_VER_ARTICULOS_SALDABLES:
 				break;
-			case VER_ARTICULO_MAS_CARO:
+			case MAIN_MENU_VER_ARTICULO_MAS_CARO:
 				break;
-			case VER_ARTICULOS_MENOS_STOCK:
+			case MAIN_MENU_VER_ARTICULOS_MENOS_STOCK:
 				break;
-			case SALIR:
+			case MAIN_MENU_SALIR:
 				break;
 			default:
 				System.out.println("Introduce una opcion correcta");
 			}
-		} while (opicionMainMenu != SALIR);
+		} while (opicionMainMenu != MAIN_MENU_SALIR);
 		
 	}
 	
