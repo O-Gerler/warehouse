@@ -107,8 +107,13 @@ public class Factura {
 	}
 
 	private Articulo recibirCodigoArticulo(Almacen almacen, Scanner sc) {
-		System.out.print("Introduce el codigo del producto: ");
-		String codigoProducto = sc.nextLine().trim().toLowerCase();
+		String codigoProducto;
+		
+		do {
+			System.out.print("Introduce el codigo del producto: ");
+			codigoProducto = sc.nextLine().trim().toLowerCase();
+		} while (!almacen.hayStock(codigoProducto));
+		
 		return almacen.articulo(codigoProducto);
 		
 
