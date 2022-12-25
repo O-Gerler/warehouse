@@ -7,6 +7,38 @@ import java.util.Scanner;
 
 public class GestorAlmacen {
 	public void run() {
+		Almacen almacen = new Almacen();
+		almacen.cargarDatos();
+		
+		Scanner sc = new Scanner(System.in);
+		
+		final int REALIZAR_VENTA =1;
+		final int REALIZAR_COMPRA =2;
+		final int VER_ARTICULOS_SALDABLES =3;
+		final int VER_ARTICULO_MAS_CARO =4;
+		final int VER_ARTICULOS_MENOS_STOCK =5;
+		final int SALIR =0;
+		
+		int opicionMainMenu = -1;
+		
+		do {
+			switch(opicionMainMenu) {
+			case REALIZAR_VENTA:
+				break;
+			case REALIZAR_COMPRA:
+				break;
+			case VER_ARTICULOS_SALDABLES:
+				break;
+			case VER_ARTICULO_MAS_CARO:
+				break;
+			case VER_ARTICULOS_MENOS_STOCK:
+				break;
+			case SALIR:
+				break;
+			default:
+				System.out.println("Introduce una opcion correcta");
+			}
+		} while (opicionMainMenu != SALIR);
 		
 	}
 	
