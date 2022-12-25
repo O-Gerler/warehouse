@@ -31,7 +31,7 @@ public class Almacen {
 						, Double.parseDouble(linea[4]), Integer.parseInt(linea[5]), linea[6], 
 						linea[7], Integer.parseInt(linea[8]) , linea[9], Double.parseDouble(linea[10]));
 				articulos.add(vino);
-			}if (linea[0].equals("2")) {
+			}if (linea[0].equals("3")) {
 				Cerveza cerveza = new Cerveza(linea[1], linea[0], linea[2], Integer.parseInt(linea[3])
 						, Double.parseDouble(linea[4]), Integer.parseInt(linea[5]), linea[6], linea[7],
 						Double.parseDouble(linea[8]));
