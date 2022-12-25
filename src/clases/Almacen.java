@@ -127,7 +127,7 @@ public class Almacen {
 	}
 	
 	public ArrayList<Articulo> ordenarPorPrecio(String orden) {
-		ArrayList<Articulo> articulosOrdenados = (ArrayList<Articulo>) articulos.clone();
+		ArrayList<Articulo> articulosOrdenados = articulos;
 		
 		if (orden.equals("descendente")) {
 			articulosOrdenados.sort(new CompararPrecioPorOrdenDescendente());
@@ -139,7 +139,7 @@ public class Almacen {
 	}
 	
 	public void ordenarPorStock(String orden) {
-		ArrayList<Articulo> articulosOrdenados = (ArrayList<Articulo>) articulos.clone();
+		ArrayList<Articulo> articulosOrdenados = articulos;
 		
 		if (orden.equals("descendente")) {
 			articulosOrdenados.sort(new CompararStockPorOrdenDescendente());
