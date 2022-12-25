@@ -68,6 +68,8 @@ public class GestorAlmacen {
 				mostrarArticulosPorOrdenDePrecio(almacen, sc);
 				break;
 			case MAIN_MENU_VER_ARTICULOS_MENOS_STOCK:
+				String opcioOrdenLista = elegirOrden(sc);
+				almacen.ordenarPorStock(opcioOrdenLista);
 				break;
 			case MAIN_MENU_SALIR:
 				break;
