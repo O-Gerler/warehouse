@@ -109,13 +109,9 @@ public class Factura {
 	private Articulo recibirCodigoArticulo(Almacen almacen, Scanner sc) {
 		System.out.print("Introduce el codigo del producto: ");
 		String codigoProducto = sc.nextLine().trim().toLowerCase();
-		for (Articulo articulo : almacen.getArticulos()) {
-			if (codigoProducto.equals(articulo.getCode().toLowerCase())) {
-				return articulo;
-			}
-		}
+		return almacen.articulo(codigoProducto);
 		
-		return null;
+
 	}
 	
 	public void eliminarLinea(int numeroLinea, Scanner sc) {
