@@ -1,6 +1,9 @@
 package clases;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Almacen {
 	private ArrayList<Articulo> articulos = new ArrayList<>();
@@ -11,8 +14,30 @@ public class Almacen {
 		return articulos;
 	}
 
-	public void cargarDatos() {
-		//con un fichero
+	public void cargarDatos() throws FileNotFoundException {
+		File file = new File("src/datosFichero/datos.txt");
+		Scanner sc = new Scanner(file);
+		
+		while(sc.hasNextLine()) {
+			String linea[] = sc.nextLine().split(";");
+			if (linea[0].equals("1")) {
+				Refresco refresco = new Refresco(linea[1], linea[0], linea[2], Integer.parseInt(linea[3])
+						, Double.parseDouble(linea[4]), Integer.parseInt(linea[5]), linea[6], 
+						linea[7].equals("true") ? true : false , linea[8].equals("true") ? true : false , 
+								Integer.parseInt(linea[9]));
+				articulos.add(refresco);
+			}if (linea[0].equals("2")) {
+				Vino vino = new Vino(linea[1], linea[0], linea[2], Integer.parseInt(linea[3])
+						, Double.parseDouble(linea[4]), Integer.parseInt(linea[5]), linea[6], 
+						linea[7], Integer.parseInt(linea[8]) , linea[9], Double.parseDouble(linea[10]));
+				articulos.add(vino);
+			}if (linea[0].equals("2")) {
+				Cerveza cerveza = new Cerveza(linea[1], linea[0], linea[2], Integer.parseInt(linea[3])
+						, Double.parseDouble(linea[4]), Integer.parseInt(linea[5]), linea[6], linea[7],
+						Double.parseDouble(linea[8]));
+				articulos.add(cerveza);
+			}
+		}
 	}
 	
 	public Articulo mostrarMasCaro() {
