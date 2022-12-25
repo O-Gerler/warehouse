@@ -140,7 +140,7 @@ public class GestorAlmacen {
 				System.out.println("ERROR!!!");
 				opcionMenu = -1;
 			}
-		} while (opcionMenu > 0);
+		} while (opcionMenu < 0);
 		
 		return opcionMenu;
 	}
