@@ -174,8 +174,12 @@ public class Factura {
 		File file = new File(nombreFichero);
 		
 		if (file.exists()) {
-			System.out.println("El archivo ya existe\nCambiando nombre...");
-			nombreFichero = String.valueOf(numFichero).concat(nombreFichero);
+			do {
+				System.out.println("El archivo ya existe\nCambiando nombre...");
+				nombreFichero = String.valueOf(numFichero).concat(nombreFichero);
+				numFichero++;
+			}while(new File(nombreFichero).exists());
+			
 		}
 		
 		try {
@@ -210,7 +214,8 @@ public class Factura {
 	}
 
 	private String generarNombreFichero() {
-		String nombreFichero = this.numero + "_"+ (this.fecha != null ? new SimpleDateFormat("yyyy/MM/dd").format(this.fecha) : new Date()) 
+		String nombreFichero = this.numero + "_"+ (this.fecha != null ? new SimpleDateFormat("yyyy/MM/dd").format(this.fecha) 
+				: new SimpleDateFormat("yyyy/MM/dd").format(new Date()))
 				+"_factura.txt";
 		return nombreFichero;
 	}
