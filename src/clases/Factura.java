@@ -63,7 +63,7 @@ public class Factura {
 			int cantidadArticulo = recibirCantidadArticulo(almacen,sc,art);
 			
 			System.out.println(numLinea + ";" + art.getName()+ ";" + cantidadArticulo);
-			System.out.print("Desea continuar con la compra[S/n]: ");
+			System.out.print("Confirmar [S/n]: ");
 			String continuarCompra = sc.nextLine();
 			
 			if (!continuarCompra.toLowerCase().equals("n")) {
@@ -99,7 +99,7 @@ public class Factura {
 				System.out.println("ERROR!!!");
 				cantidadArticulo = -1;
 			}
-		} while (cantidadArticulo < 1 && !almacen.disponibilidad(art.getCode(), cantidadArticulo));
+		} while (cantidadArticulo < 1 || !almacen.disponibilidad(art.getCode(), cantidadArticulo));
 		
 		return cantidadArticulo;
 	}
@@ -162,7 +162,7 @@ public class Factura {
 		System.out.println("Concepto de factura: \t\t\t" + this.concepto);
 		System.out.println("Fecha: " + this.fecha != null ? new SimpleDateFormat("yyyy/MM/dd").format(this.fecha) : new Date());
 		System.out.println("------------------------------------------------------------------------------------------------");
-		System.out.println("\tNumero\t|\tCantidad\t|\tPrecio Total\t|\tArticulo\t\t|");
+		System.out.println("\tNumero\t|\tCantidad\t|\tPrecio sin IVA\t|\tArticulo\t\t|");
 		for (LineaFactura lineaFactura : lineaFacturas) {
 			System.out.println("\t" + lineaFactura.getNumero() + "\t\t"
 					+ lineaFactura.getCantidad() + "\t\t\t" + lineaFactura.precioTotal() + 
