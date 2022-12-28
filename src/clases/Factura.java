@@ -217,8 +217,8 @@ public class Factura {
 	}
 
 	private String generarNombreFichero() {
-		String nombreFichero = this.numero + "_"+ (this.fecha != null ? new SimpleDateFormat("yyyy/MM/dd").format(this.fecha) 
-				: new SimpleDateFormat("yyyy/MM/dd").format(new Date()))
+		String nombreFichero = this.numero + "_" + (this.fecha != null ? new SimpleDateFormat("yyyy-MM-dd").format(this.fecha) 
+				: new SimpleDateFormat("yyyy-MM-dd").format(new Date()))
 				+"_factura.txt";
 		return nombreFichero;
 	}
