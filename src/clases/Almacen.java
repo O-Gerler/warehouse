@@ -20,19 +20,19 @@ public class Almacen {
 		
 		while(sc.hasNextLine()) {
 			String linea[] = sc.nextLine().split(";");
-			if (linea[0].equals("1")) {
-				Refresco refresco = new Refresco(linea[1], linea[0], linea[2], Integer.parseInt(linea[3])
+			if (linea[1].charAt(0) == '1') {
+				Refresco refresco = new Refresco(linea[0], linea[1], linea[2], Integer.parseInt(linea[3])
 						, Double.parseDouble(linea[4]), Integer.parseInt(linea[5]), linea[6], 
 						linea[7].equals("true") ? true : false , linea[8].equals("true") ? true : false , 
 								Integer.parseInt(linea[9]));
 				articulos.add(refresco);
-			}if (linea[0].equals("2")) {
-				Vino vino = new Vino(linea[1], linea[0], linea[2], Integer.parseInt(linea[3])
+			}if (linea[1].charAt(0) == '2') {
+				Vino vino = new Vino(linea[0], linea[1], linea[2], Integer.parseInt(linea[3])
 						, Double.parseDouble(linea[4]), Integer.parseInt(linea[5]), linea[6], 
 						linea[7], Integer.parseInt(linea[8]) , linea[9], Double.parseDouble(linea[10]));
 				articulos.add(vino);
-			}if (linea[0].equals("3")) {
-				Cerveza cerveza = new Cerveza(linea[1], linea[0], linea[2], Integer.parseInt(linea[3])
+			}if (linea[1].charAt(0) == '3') {
+				Cerveza cerveza = new Cerveza(linea[0], linea[1], linea[2], Integer.parseInt(linea[3])
 						, Double.parseDouble(linea[4]), Integer.parseInt(linea[5]), linea[6], linea[7],
 						Double.parseDouble(linea[8]));
 				articulos.add(cerveza);
@@ -66,10 +66,11 @@ public class Almacen {
 	public boolean hayStock(String codigoProducto) {
 		for (Articulo articulo : articulos) {
 			if (codigoProducto.equals(articulo.getCode()) && articulo.getStock() > 0) {
+				System.out.println("a");
 				return true;
 			}
 		}
-		
+		System.out.println("b");
 		return false;
 	}
 	
@@ -127,29 +128,29 @@ public class Almacen {
 	}
 	
 	public ArrayList<Articulo> ordenarPorPrecio(String orden) {
-		ArrayList<Articulo> articulosOrdenados = articulos;
+		ArrayList<Articulo> articulosOrdenadosPorPrecio = articulos;
 		
 		if (orden.equals("descendente")) {
-			articulosOrdenados.sort(new CompararPrecioPorOrdenDescendente());
+			articulosOrdenadosPorPrecio.sort((arg0, arg1) ->  arg0.getPrecio() - arg1.getPrecio() > 0 ? 1 : -1) ;
 		}else {
-			articulosOrdenados.sort(new CompararPrecioPorOrdenAscendete());
+			articulosOrdenadosPorPrecio.sort((arg0, arg1) -> arg1.getPrecio() - arg0.getPrecio() > 0 ? 1 : -1) ;
 		}
 		
-		return articulosOrdenados;
+		return articulosOrdenadosPorPrecio;
 	}
 	
 	public void ordenarPorStock(String orden) {
 		ArrayList<Articulo> articulosOrdenados = articulos;
 		
 		if (orden.equals("descendente")) {
-			articulosOrdenados.sort(new CompararStockPorOrdenDescendente());
+			articulosOrdenados.sort((arg0, arg1) -> arg1.getStock() - arg0.getStock());
 		}else {
-			articulosOrdenados.sort(new CompararStockPorOrdenAscendente());
+			articulosOrdenados.sort((arg0, arg1) -> arg0.getStock() - arg1.getStock());
 		}
 		
 		for (Articulo articulo : articulosOrdenados) {
 			if (articulo instanceof Refresco) {
-				((Refresco) articulo).visualizarPropiedades();
+				((Refresco) articulo).visualizarAticulo();
 			}else if (articulo instanceof Cerveza) {
 				((Cerveza) articulo).visualizarAticulo();
 			}else if (articulo instanceof Vino) {
