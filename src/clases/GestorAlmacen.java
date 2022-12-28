@@ -89,17 +89,19 @@ public class GestorAlmacen {
 	}
 
 	private void realizarCompra(Almacen almacen, Scanner sc) {
-		String articuloBuscar = pedirArticulo(almacen, sc);
-		Articulo articuloIncrementar = almacen.articulo(articuloBuscar);
-		int cantidadIncrementar = pedirCantidadIncrementar(almacen, sc);
-		articuloIncrementar.incrementarStock(cantidadIncrementar);
+		Articulo articuloBuscar = pedirArticulo(almacen, sc);
+		if (articuloBuscar != null) {
+			int cantidadIncrementar = pedirCantidadIncrementar(almacen, sc);
+			articuloBuscar.incrementarStock(cantidadIncrementar);
+		} else 
+			System.out.println("Articulo no encontrado");
 	}
 
 	private int pedirCantidadIncrementar(Almacen almacen, Scanner sc) {
 		int cantidad = -1;
 		
 		do {
-			System.out.print("Introduce la opcion: ");
+			System.out.print("Introduce la cantidad: ");
 			try {
 				cantidad = Integer.parseInt(sc.nextLine());
 			} catch (Exception e) {
@@ -111,14 +113,10 @@ public class GestorAlmacen {
 		return cantidad;
 	}
 
-	private String pedirArticulo(Almacen almacen, Scanner sc) {
+	private Articulo pedirArticulo(Almacen almacen, Scanner sc) {
 		System.out.print("Introduce el codigo del articulo: ");
 		String articuloBuscar = sc.nextLine();
-		if (almacen.articulo(articuloBuscar) == null) {
-			return "El articulo seleccionado no existe";
-		}
-		
-		return articuloBuscar;
+		return almacen.articulo(articuloBuscar) != null ? almacen.articulo(articuloBuscar) : null;
 	}
 
 	private void mostrarArticulosPorOrdenDePrecio(Almacen almacen, Scanner sc) {
