@@ -1,6 +1,9 @@
 package clases;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -80,12 +83,28 @@ public class GestorAlmacen {
 				almacen.ordenarPorStock(opcioOrdenLista);
 				break;
 			case MAIN_MENU_SALIR:
+				System.out.println("Saliendo...");
 				break;
 			default:
 				System.out.println("Introduce una opcion correcta");
 			}
 		} while (opcionMainMenu != MAIN_MENU_SALIR);
+		guardarDatos(almacen,sc);
+	}
+
+	private void guardarDatos(Almacen almacen, Scanner sc) {
+		File file = new File("src/datosFichero/datos.txt");
 		
+		try {
+			PrintWriter pw = new PrintWriter(file);
+			for (Articulo articulo : almacen.getArticulos()) {
+				pw.println(articulo);
+			}
+			pw.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("No se han podido guardar los datos");
+		}
 	}
 
 	private void realizarCompra(Almacen almacen, Scanner sc) {
