@@ -1,13 +1,14 @@
 package clases;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
 public class GestorAlmacen {
-	public void run() throws FileNotFoundException {
+	public void run() throws IOException {
 		Almacen almacen = new Almacen();
 		almacen.cargarDatos();
 		
@@ -89,7 +90,8 @@ public class GestorAlmacen {
 
 	private void mostrarArticulosPorOrdenDePrecio(Almacen almacen, Scanner sc) {
 		String opcionTipoDeOrdenacionLista = elegirOrden(sc);
-		for (Articulo articulo : almacen.ordenarPorPrecio(opcionTipoDeOrdenacionLista)) {
+		ArrayList<Articulo> articulos = almacen.ordenarPorPrecio(opcionTipoDeOrdenacionLista);
+		for (Articulo articulo : articulos) {
 			mostrarPorTipoDeArticulo(articulo);
 		}
 	}
@@ -159,8 +161,8 @@ public class GestorAlmacen {
 	private void mostrarOpcionesMainMenu(int mAIN_MENU_REALIZAR_COMPRA, int mAIN_MENU_REALIZAR_VENTA, int mAIN_MENU_VER_ARTICULOS_SALDABLES,
 			int mAIN_MENU_VER_ARTICULO_MAS_CARO, int mAIN_MENU_VER_ARTICULO_MENOS_STOCK, int mAIN_MENU_SALIR) {
 		System.out.println("=====================MENU-PRINCPAL=====================");
-		System.out.println(mAIN_MENU_REALIZAR_COMPRA + ".- Realizar compra");
 		System.out.println(mAIN_MENU_REALIZAR_VENTA + ".- Realizar venta");
+		System.out.println(mAIN_MENU_REALIZAR_COMPRA + ".- Realizar compra");
 		System.out.println(mAIN_MENU_VER_ARTICULOS_SALDABLES + ".- Ver articulos saludables");
 		System.out.println(mAIN_MENU_VER_ARTICULO_MAS_CARO + ".- Ordenar articulos por precio");
 		System.out.println(mAIN_MENU_VER_ARTICULO_MENOS_STOCK + ".- Ordenar articulos por stock");
