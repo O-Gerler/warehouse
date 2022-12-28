@@ -98,7 +98,7 @@ public class GestorAlmacen {
 
 	private void mostrarPorTipoDeArticulo(Articulo articulo) {
 		if (articulo instanceof Refresco) {
-			((Refresco) articulo).visualizarPropiedades();
+			((Refresco) articulo).visualizarAticulo();
 		}else if (articulo instanceof Cerveza) {
 			((Cerveza) articulo).visualizarAticulo();
 		}else if (articulo instanceof Vino) {
@@ -118,7 +118,7 @@ public class GestorAlmacen {
 		for (Articulo articulo : almacen.getArticulos()) {
 			if (articulo instanceof Refresco) {
 				if (((Refresco) articulo).esSaludable()) {
-					((Refresco) articulo).visualizarPropiedades();
+					((Refresco) articulo).visualizarAticulo();
 				}
 			}else if (articulo instanceof Cerveza) {
 				if (((Cerveza) articulo).esSaludable()) {
