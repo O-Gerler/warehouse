@@ -75,4 +75,11 @@ public abstract class Articulo {
 	public abstract void precioTotal();
 	
 	public abstract boolean esSaludable();
+
+	@Override
+	public String toString() {
+		return name + ";" + code + ";" + mark + ";" + capacidadBotella + ";" + precio + ";" + stock;
+	}
+	
+	
 }
