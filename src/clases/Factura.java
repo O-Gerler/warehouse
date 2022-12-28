@@ -143,13 +143,13 @@ public class Factura {
 	}
 	
 	public double precioTotal() {
-		float precioTotal = 0;
+		double precioTotal = 0;
 		
 		for (LineaFactura lineaFactura : lineaFacturas) {
 			precioTotal += (lineaFactura.getArticulo().getPrecio() * lineaFactura.getCantidad());
 		}
 		
-		return precioTotal;
+		return precioTotal * IVA;
 	}
 	
 	public void mostrarEnPantalla() {
