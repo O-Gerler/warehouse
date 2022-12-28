@@ -146,7 +146,10 @@ public class Factura {
 		double precioTotal = 0;
 		
 		for (LineaFactura lineaFactura : lineaFacturas) {
-			precioTotal += (lineaFactura.getArticulo().getPrecio() * lineaFactura.getCantidad());
+			if (lineaFactura.getArticulo() instanceof Cerveza) 
+				precioTotal += (((Cerveza)lineaFactura.getArticulo()).calcularTasa() * lineaFactura.getArticulo().getPrecio());
+			else
+				precioTotal += (lineaFactura.getArticulo().getPrecio() * lineaFactura.getCantidad());
 		}
 		
 		return precioTotal * IVA;
