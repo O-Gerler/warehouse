@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class Factura {
-	private static final int IVA = 21;
+	private static final double IVA = 1.21;
 	private int numero;
 	private String nombreEmpresa;
 	private Date fecha;
