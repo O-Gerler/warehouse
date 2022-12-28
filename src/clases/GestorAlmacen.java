@@ -67,7 +67,7 @@ public class GestorAlmacen {
 				} while (opcionMenuFactura != MENU_FACTURA_SALIR);
 				break;
 			case MAIN_MENU_REALIZAR_COMPRA:
-				System.out.println("Aun no esta preparado");
+				realizarCompra(almacen, sc);
 				break;
 			case MAIN_MENU_VER_ARTICULOS_SALDABLES:
 				mostrarArticulosSaludables(almacen);
@@ -86,6 +86,39 @@ public class GestorAlmacen {
 			}
 		} while (opcionMainMenu != MAIN_MENU_SALIR);
 		
+	}
+
+	private void realizarCompra(Almacen almacen, Scanner sc) {
+		String articuloBuscar = pedirArticulo(almacen, sc);
+		Articulo articuloIncrementar = almacen.articulo(articuloBuscar);
+		int cantidadIncrementar = pedirCantidadIncrementar(almacen, sc);
+		articuloIncrementar.incrementarStock(cantidadIncrementar);
+	}
+
+	private int pedirCantidadIncrementar(Almacen almacen, Scanner sc) {
+		int cantidad = -1;
+		
+		do {
+			System.out.print("Introduce la opcion: ");
+			try {
+				cantidad = Integer.parseInt(sc.nextLine());
+			} catch (Exception e) {
+				System.out.println("ERROR!!!");
+				cantidad = -1;
+			}
+		} while (cantidad < 0);
+		
+		return cantidad;
+	}
+
+	private String pedirArticulo(Almacen almacen, Scanner sc) {
+		System.out.print("Introduce el codigo del articulo: ");
+		String articuloBuscar = sc.nextLine();
+		if (almacen.articulo(articuloBuscar) == null) {
+			return "El articulo seleccionado no existe";
+		}
+		
+		return articuloBuscar;
 	}
 
 	private void mostrarArticulosPorOrdenDePrecio(Almacen almacen, Scanner sc) {
