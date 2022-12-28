@@ -1,8 +1,6 @@
 package clases;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -116,7 +114,6 @@ public class Factura {
 		
 		return almacen.articulo(codigoProducto);
 		
-
 	}
 	
 	public void eliminarLinea(int numeroLinea, Scanner sc) {
@@ -161,12 +158,14 @@ public class Factura {
 		System.out.println("Nombre de empresa: \t\t\t" + this.nombreEmpresa);
 		System.out.println("Concepto de factura: \t\t\t" + this.concepto);
 		System.out.println("Fecha: " + this.fecha != null ? new SimpleDateFormat("yyyy/MM/dd").format(this.fecha) : new Date());
-		System.out.println("---------------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------------------------------------------");
 		System.out.println("\tNumero\t|\tCantidad\t|\tPrecio Total\t|\tArticulo\t\t|");
 		for (LineaFactura lineaFactura : lineaFacturas) {
-			System.out.println(lineaFactura);
+			System.out.println("\t" + lineaFactura.getNumero() + "\t\t"
+					+ lineaFactura.getCantidad() + "\t\t\t" + lineaFactura.precioTotal() + 
+					"\t\t\t" + lineaFactura.getArticulo().getName());
 		}
-		System.out.println("---------------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------------------------------------------");
 		System.out.println("Precio total: " + precioTotal());
 	}
 	
@@ -186,12 +185,14 @@ public class Factura {
 			pw.println("Nombre de empresa: \t\t\t" + this.nombreEmpresa);
 			pw.println("Concepto de factura: \t\t\t" + this.concepto);
 			pw.println("Fecha: " + this.fecha != null ? new SimpleDateFormat("yyyy/MM/dd").format(this.fecha) : new Date());
-			pw.println("---------------------------------------------------------------------");
+			pw.println("------------------------------------------------------------------------------------------------");
 			pw.println("\tNumero\t|\tCantidad\t|\tPrecio Total\t|\tArticulo\t\t|");
 			for (LineaFactura lineaFactura : lineaFacturas) {
-				pw.println(lineaFactura);
+				pw.println("\t" + lineaFactura.getNumero() + "\t\t"
+						+ lineaFactura.getCantidad() + "\t\t\t" + lineaFactura.precioTotal() + 
+						"\t\t\t" + lineaFactura.getArticulo().getName());
 			}
-			pw.println("---------------------------------------------------------------------");
+			pw.println("------------------------------------------------------------------------------------------------");
 			pw.println("Precio total: " + precioTotal());
 				
 			pw.close();
