@@ -101,4 +101,11 @@ public class Vino extends Articulo implements Alcoholico{
 		return false;
 	}
 
+	@Override
+	public String toString() {
+		return super.name + ";" + super.code + ";" + super.mark + ";" + super.capacidadBotella + ";" + super.precio + ";" + super.stock 
+				+ ";" + color + ";" + origen + ";" + anio + ";" + tipoUva + ";" + gradosAlcohol;
+	}
+
+	
 }
