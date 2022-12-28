@@ -2,6 +2,7 @@ package clases;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -56,14 +57,14 @@ public class Factura {
 	
 	public void addLinea(Almacen almacen, Scanner sc) {
 		boolean agregarLinea = false;
-		Articulo art = null;
 		
 		do {
+			Articulo art = null;
 			LineaFactura lineaFactura = new LineaFactura();
 			art = recibirCodigoArticulo(almacen, sc);
-			int cantidadArticulo = recibirCantidadArticulo(almacen,sc);
+			int cantidadArticulo = recibirCantidadArticulo(almacen,sc,art);
 			
-			System.out.println(lineaFactura);
+			System.out.println(numLinea + ";" + art.getName()+ ";" + cantidadArticulo);
 			System.out.print("Desea continuar con la compra[S/n]: ");
 			String continuarCompra = sc.nextLine();
 			
@@ -74,6 +75,7 @@ public class Factura {
 				lineaFacturas.add(lineaFactura);
 				System.out.println("Linea agregada");
 				numLinea++;
+				agregarLinea = true;
 			}else {
 				agregarLinea = false;
 			}
@@ -81,14 +83,14 @@ public class Factura {
 			if (agregarLinea) {
 				System.out.print("Desea continuar con la compra[S/n]: ");
 				continuarCompra = sc.nextLine();
-				if (!continuarCompra.toLowerCase().equals("n"))
-					agregarLinea = true;
+				if (continuarCompra.toLowerCase().equals("n"))
+					agregarLinea = false;
 			}
 			
 		}while(agregarLinea);
 	}
 
-	private int recibirCantidadArticulo(Almacen almacen, Scanner sc) {
+	private int recibirCantidadArticulo(Almacen almacen, Scanner sc, Articulo art) {
 		int cantidadArticulo = 0;
 		
 		do {
@@ -99,7 +101,7 @@ public class Factura {
 				System.out.println("ERROR!!!");
 				cantidadArticulo = -1;
 			}
-		} while (cantidadArticulo < 1 && !almacen.disponibilidad(concepto, cantidadArticulo));
+		} while (cantidadArticulo < 1 && !almacen.disponibilidad(art.getCode(), cantidadArticulo));
 		
 		return cantidadArticulo;
 	}
@@ -168,43 +170,46 @@ public class Factura {
 		System.out.println("Precio total: " + precioTotal());
 	}
 	
-	public void guardarEnFichero(Almacen almacen) throws FileNotFoundException {
+	public void guardarEnFichero(Almacen almacen) {
 		String nombreFichero = generarNombreFichero();
 		File file = new File(nombreFichero);
 		
 		if (file.exists()) {
-			System.out.println("El archivo ya existe");
+			System.out.println("El archivo ya existe\nCambiando nombre...");
 			nombreFichero = String.valueOf(numFichero).concat(nombreFichero);
-			file = new File(nombreFichero);
 		}
 		
-		PrintWriter pw = new PrintWriter(file);
-		pw.println("-------------------------------FACTURA-------------------------------");
-		pw.println("Numero de factura: \t\t\t" + this.numero);
-		pw.println("Nombre de empresa: \t\t\t" + this.nombreEmpresa);
-		pw.println("Concepto de factura: \t\t\t" + this.concepto);
-		pw.println("Fecha: " + this.fecha != null ? new SimpleDateFormat("yyyy/MM/dd").format(this.fecha) : new Date());
-		pw.println("---------------------------------------------------------------------");
-		pw.println("\tNumero\t|\tCantidad\t|\tPrecio Total\t|\tArticulo\t\t|");
-		for (LineaFactura lineaFactura : lineaFacturas) {
-			pw.println(lineaFactura);
-		}
-		pw.println("---------------------------------------------------------------------");
-		pw.println("Precio total: " + precioTotal());
-		
-		pw.close();
-		
-		for (LineaFactura lineaFactura : lineaFacturas) {
-			for (Articulo articulo : almacen.getArticulos()) {
-				if (articulo.code.equals(lineaFactura.getArticulo().getCode())) {
-					articulo.disminuirStock(lineaFactura.getCantidad());
+		try {
+			PrintWriter pw = new PrintWriter(nombreFichero);
+			pw.println("-------------------------------FACTURA-------------------------------");
+			pw.println("Numero de factura: \t\t\t" + this.numero);
+			pw.println("Nombre de empresa: \t\t\t" + this.nombreEmpresa);
+			pw.println("Concepto de factura: \t\t\t" + this.concepto);
+			pw.println("Fecha: " + this.fecha != null ? new SimpleDateFormat("yyyy/MM/dd").format(this.fecha) : new Date());
+			pw.println("---------------------------------------------------------------------");
+			pw.println("\tNumero\t|\tCantidad\t|\tPrecio Total\t|\tArticulo\t\t|");
+			for (LineaFactura lineaFactura : lineaFacturas) {
+				pw.println(lineaFactura);
+			}
+			pw.println("---------------------------------------------------------------------");
+			pw.println("Precio total: " + precioTotal());
+				
+			pw.close();
+			
+			for (LineaFactura lineaFactura : lineaFacturas) {
+				for (Articulo articulo : almacen.getArticulos()) {
+					if (articulo.code.equals(lineaFactura.getArticulo().getCode())) {
+						articulo.disminuirStock(lineaFactura.getCantidad());
+					}
 				}
 			}
+		} catch (Exception e) {
+			System.out.println("No se pudo crear el archivo");
 		}
 	}
 
 	private String generarNombreFichero() {
-		String nombreFichero = this.numero + "_ "+ (this.fecha != null ? new SimpleDateFormat("yyyy/MM/dd").format(this.fecha) : new Date()) 
+		String nombreFichero = this.numero + "_"+ (this.fecha != null ? new SimpleDateFormat("yyyy/MM/dd").format(this.fecha) : new Date()) 
 				+"_factura.txt";
 		return nombreFichero;
 	}
