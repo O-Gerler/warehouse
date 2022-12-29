@@ -36,6 +36,7 @@ public class GestorAlmacen {
 		
 		do {
 			mostrarOpcionesMainMenu(MAIN_MENU_REALIZAR_COMPRA, MAIN_MENU_REALIZAR_VENTA, MAIN_MENU_VER_ARTICULOS_SALDABLES,
+					MAIN_MENU_VER_ARTICULO_MAS_CARO, MAIN_MENU_VER_ARTICULOS_CON_MENOR_STOCK,
 					MAIN_MENU_FILTRAR_ARTICULO_MAS_CARO, MAIN_MENU_FILTRAR_ARTICULOS_MENOS_STOCK,MAIN_MENU_SALIR);
 			opcionMainMenu = elegirOpcion(opcionMainMenu, sc);
 			
@@ -228,13 +229,16 @@ public class GestorAlmacen {
 	}
 
 	private void mostrarOpcionesMainMenu(int mAIN_MENU_REALIZAR_COMPRA, int mAIN_MENU_REALIZAR_VENTA, int mAIN_MENU_VER_ARTICULOS_SALDABLES,
-			int mAIN_MENU_VER_ARTICULO_MAS_CARO, int mAIN_MENU_VER_ARTICULO_MENOS_STOCK, int mAIN_MENU_SALIR) {
+			int MAIN_MENU_VER_ARTICULO_MAS_CARO, int MAIN_MENU_VER_ARTICULOS_CON_MENOR_STOCK,
+			int mAIN_MENU_FILTRAR_ARTICULO_MAS_CARO, int mAIN_MENU_FILTRAR_ARTICULO_MENOS_STOCK, int mAIN_MENU_SALIR) {
 		System.out.println("=====================MENU-PRINCPAL=====================");
 		System.out.println(mAIN_MENU_REALIZAR_VENTA + ".- Realizar venta");
 		System.out.println(mAIN_MENU_REALIZAR_COMPRA + ".- Realizar compra");
 		System.out.println(mAIN_MENU_VER_ARTICULOS_SALDABLES + ".- Ver articulos saludables");
-		System.out.println(mAIN_MENU_VER_ARTICULO_MAS_CARO + ".- Ordenar articulos por precio");
-		System.out.println(mAIN_MENU_VER_ARTICULO_MENOS_STOCK + ".- Ordenar articulos por stock");
+		System.out.println(MAIN_MENU_VER_ARTICULO_MAS_CARO + ".- Mostrar articulo mas caro");
+		System.out.println(MAIN_MENU_VER_ARTICULOS_CON_MENOR_STOCK + ".- Mostrar articulos con stock menor a");
+		System.out.println(mAIN_MENU_FILTRAR_ARTICULO_MAS_CARO + ".- Ordenar articulos por precio");
+		System.out.println(mAIN_MENU_FILTRAR_ARTICULO_MENOS_STOCK + ".- Ordenar articulos por stock");
 		System.out.println(mAIN_MENU_SALIR + ".- Salir");
 		
 	}
