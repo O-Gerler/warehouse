@@ -174,19 +174,19 @@ public class Factura {
 	
 	public void guardarEnFichero(Almacen almacen) {
 		String nombreFichero = generarNombreFichero();
-		File file = new File(nombreFichero);
+		File file = new File("src/facturas/"+nombreFichero);
 		
 		if (file.exists()) {
 			do {
 				System.out.println("El archivo ya existe\nCambiando nombre...");
 				nombreFichero = String.valueOf(numFichero).concat(nombreFichero);
 				numFichero++;
-			}while(new File(nombreFichero).exists());
+			}while(new File("src/facturas/"+nombreFichero).exists());
 			
 		}
 		
 		try {
-			PrintWriter pw = new PrintWriter(nombreFichero);
+			PrintWriter pw = new PrintWriter("src/facturas/"+nombreFichero);
 			pw.println("-------------------------------FACTURA-------------------------------");
 			pw.println("Numero de factura: \t\t\t" + this.numero);
 			pw.println("Nombre de empresa: \t\t\t" + this.nombreEmpresa);
