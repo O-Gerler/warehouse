@@ -21,7 +21,9 @@ public class GestorAlmacen {
 		final int MAIN_MENU_REALIZAR_COMPRA =2;
 		final int MAIN_MENU_VER_ARTICULOS_SALDABLES =3;
 		final int MAIN_MENU_VER_ARTICULO_MAS_CARO =4;
-		final int MAIN_MENU_VER_ARTICULOS_MENOS_STOCK =5;
+		final int MAIN_MENU_VER_ARTICULOS_CON_MENOR_STOCK =5;
+		final int MAIN_MENU_FILTRAR_ARTICULO_MAS_CARO =6;
+		final int MAIN_MENU_FILTRAR_ARTICULOS_MENOS_STOCK =7;
 		final int MAIN_MENU_SALIR =0;
 		
 		final int MENU_FACTURA_ADD_LINEA =1;
@@ -34,7 +36,7 @@ public class GestorAlmacen {
 		
 		do {
 			mostrarOpcionesMainMenu(MAIN_MENU_REALIZAR_COMPRA, MAIN_MENU_REALIZAR_VENTA, MAIN_MENU_VER_ARTICULOS_SALDABLES,
-					MAIN_MENU_VER_ARTICULO_MAS_CARO, MAIN_MENU_VER_ARTICULOS_MENOS_STOCK,MAIN_MENU_SALIR);
+					MAIN_MENU_FILTRAR_ARTICULO_MAS_CARO, MAIN_MENU_FILTRAR_ARTICULOS_MENOS_STOCK,MAIN_MENU_SALIR);
 			opcionMainMenu = elegirOpcion(opcionMainMenu, sc);
 			
 			switch(opcionMainMenu) {
@@ -76,9 +78,15 @@ public class GestorAlmacen {
 				mostrarArticulosSaludables(almacen);
 				break;
 			case MAIN_MENU_VER_ARTICULO_MAS_CARO:
+				almacen.mostrarMasCaro();
+				break;
+			case MAIN_MENU_VER_ARTICULOS_CON_MENOR_STOCK:
+				mostrarArticulosConStockMenorA(almacen, sc);
+				break;
+			case MAIN_MENU_FILTRAR_ARTICULO_MAS_CARO:
 				mostrarArticulosPorOrdenDePrecio(almacen, sc);
 				break;
-			case MAIN_MENU_VER_ARTICULOS_MENOS_STOCK:
+			case MAIN_MENU_FILTRAR_ARTICULOS_MENOS_STOCK:
 				String opcioOrdenLista = elegirOrden(sc);
 				almacen.ordenarPorStock(opcioOrdenLista);
 				break;
@@ -90,6 +98,17 @@ public class GestorAlmacen {
 			}
 		} while (opcionMainMenu != MAIN_MENU_SALIR);
 		guardarDatos(almacen,sc);
+	}
+
+	private void mostrarArticulosConStockMenorA(Almacen almacen, Scanner sc) {
+		Articulo articuloBuscar = pedirArticulo(almacen, sc);
+		if (articuloBuscar != null) {
+			almacen.getArticulos()
+				.stream()
+				.filter(a -> a.getStock() < articuloBuscar.getStock())
+				.forEach(System.out::println);
+		} else 
+			System.out.println("No se encontro el articulo");
 	}
 
 	private void guardarDatos(Almacen almacen, Scanner sc) {
