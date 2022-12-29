@@ -44,6 +44,10 @@ public class Cerveza extends Articulo implements Alcoholico{
 	public void setGradosAlcohol(double gradosAlcohol) {
 		this.gradosAlcohol = gradosAlcohol;
 	}
+	
+	public double getPrecio() {
+		return super.precio * this.calcularTasa();
+	}
 
 	@Override
 	public boolean esFuerte() {
@@ -60,6 +64,8 @@ public class Cerveza extends Articulo implements Alcoholico{
 		}else if (this.gradosAlcohol < 2 && this.gradosAlcohol >= 0.5) {
 			return 1.275;
 		}else if (this.gradosAlcohol < 5 && this.gradosAlcohol >= 2) {
+			return 1.423;
+		}else if (this.gradosAlcohol < 7 && this.gradosAlcohol >= 5) {
 			return 1.823;
 		}
 		
