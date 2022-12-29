@@ -59,7 +59,7 @@ public class Refresco extends Articulo{
 	}
 
 	@Override
-	public void visualizarAticulo() {
+	public void visualizarArticulo() {
 		System.out.println("name = " + super.name + ", code = " + super.code + ", mark = " + super.mark + ", capacidadBotella = " 
 				+ super.capacidadBotella + ", precio = " + super.precio + ", stock = " + super.stock + ", sabor = " + this.sabor + 
 				", zumo = " + this.zumo + ", gaseoso = " + this.gaseoso + ", cantidadAzucar = " + this.cantidadAzucar);		

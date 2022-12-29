@@ -168,11 +168,11 @@ public class GestorAlmacen {
 
 	private void mostrarPorTipoDeArticulo(Articulo articulo) {
 		if (articulo instanceof Refresco) {
-			((Refresco) articulo).visualizarAticulo();
+			((Refresco) articulo).visualizarArticulo();
 		}else if (articulo instanceof Cerveza) {
-			((Cerveza) articulo).visualizarAticulo();
+			((Cerveza) articulo).visualizarArticulo();
 		}else if (articulo instanceof Vino) {
-			((Vino) articulo).visualizarAticulo();
+			((Vino) articulo).visualizarArticulo();
 		}
 	}
 
@@ -188,15 +188,15 @@ public class GestorAlmacen {
 		for (Articulo articulo : almacen.getArticulos()) {
 			if (articulo instanceof Refresco) {
 				if (((Refresco) articulo).esSaludable()) {
-					((Refresco) articulo).visualizarAticulo();
+					((Refresco) articulo).visualizarArticulo();
 				}
 			}else if (articulo instanceof Cerveza) {
 				if (((Cerveza) articulo).esSaludable()) {
-					((Cerveza) articulo).visualizarAticulo();
+					((Cerveza) articulo).visualizarArticulo();
 				}
 			}else if (articulo instanceof Vino) {
 				if (((Vino) articulo).esSaludable()) {
-					((Vino) articulo).visualizarAticulo();
+					((Vino) articulo).visualizarArticulo();
 				}
 			}
 		}

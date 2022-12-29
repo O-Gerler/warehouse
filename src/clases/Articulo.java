@@ -70,7 +70,7 @@ public abstract class Articulo {
 		}
 	}
 	
-	public abstract void visualizarAticulo();
+	public abstract void visualizarArticulo();
 
 	public abstract void precioTotal();
 	

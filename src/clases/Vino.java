@@ -80,7 +80,7 @@ public class Vino extends Articulo implements Alcoholico{
 	}
 
 	@Override
-	public void visualizarAticulo() {
+	public void visualizarArticulo() {
 		System.out.println("name = " + super.name + ", code = " + super.code + ", mark = " + super.mark + ", capacidadBotella = " 
 				+ super.capacidadBotella + ", precio = " + super.precio + ", stock = " + super.stock + 
 				", color = " + color + ", origen = " + origen + ", anio = " + anio + ", tipoUva = " + tipoUva
