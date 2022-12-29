@@ -63,7 +63,7 @@ public class Cerveza extends Articulo implements Alcoholico{
 			return 1.823;
 		}
 		
-		return super.capacidadBotella * 2.356;
+		return 2.356;
 	}
 
 	@Override
