@@ -79,7 +79,7 @@ public class GestorAlmacen {
 				mostrarArticulosSaludables(almacen);
 				break;
 			case MAIN_MENU_VER_ARTICULO_MAS_CARO:
-				almacen.mostrarMasCaro();
+				System.out.println(almacen.mostrarMasCaro()); 
 				break;
 			case MAIN_MENU_VER_ARTICULOS_CON_MENOR_STOCK:
 				mostrarArticulosConStockMenorA(almacen, sc);
