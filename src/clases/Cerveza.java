@@ -56,14 +56,14 @@ public class Cerveza extends Articulo implements Alcoholico{
 	@Override
 	public double calcularTasa() {
 		if(this.gradosAlcohol < 0.5) {
-			return super.capacidadBotella/100 * 0;
+			return 1;
 		}else if (this.gradosAlcohol < 2 && this.gradosAlcohol >= 0.5) {
-			return super.capacidadBotella/100 * 2.75;
+			return 1.275;
 		}else if (this.gradosAlcohol < 5 && this.gradosAlcohol >= 2) {
-			return super.capacidadBotella/100 * 8.23;
+			return 1.823;
 		}
 		
-		return super.capacidadBotella/100 * 13.56;
+		return super.capacidadBotella * 2.356;
 	}
 
 	@Override
