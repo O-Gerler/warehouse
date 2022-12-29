@@ -2,6 +2,7 @@ package clases;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -147,9 +148,9 @@ public class Factura {
 		
 		for (LineaFactura lineaFactura : lineaFacturas) {
 			if (lineaFactura.getArticulo() instanceof Cerveza) 
-				precioTotal += (((Cerveza)lineaFactura.getArticulo()).calcularTasa() * lineaFactura.getArticulo().getPrecio());
+				precioTotal += (((Cerveza)lineaFactura.getArticulo()).getPrecio() * lineaFactura.getCantidad());
 			else
-				precioTotal += (lineaFactura.getArticulo().getPrecio() * lineaFactura.getCantidad());
+				precioTotal += lineaFactura.precioTotal();
 		}
 		
 		return precioTotal * IVA;
@@ -165,11 +166,11 @@ public class Factura {
 		System.out.println("\tNumero\t|\tCantidad\t|\tPrecio sin IVA\t|\tArticulo\t\t|");
 		for (LineaFactura lineaFactura : lineaFacturas) {
 			System.out.println("\t" + lineaFactura.getNumero() + "\t\t"
-					+ lineaFactura.getCantidad() + "\t\t\t" + lineaFactura.precioTotal() + 
+					+ lineaFactura.getCantidad() + "\t\t\t" + new DecimalFormat("#.00").format(lineaFactura.precioTotal())  + 
 					"\t\t\t" + lineaFactura.getArticulo().getName());
 		}
 		System.out.println("------------------------------------------------------------------------------------------------");
-		System.out.println("Precio total: " + precioTotal());
+		System.out.println("Precio total: " + new DecimalFormat("#.00").format(precioTotal()));
 	}
 	
 	public void guardarEnFichero(Almacen almacen) {
@@ -196,11 +197,11 @@ public class Factura {
 			pw.println("\tNumero\t|\tCantidad\t|\tPrecio Total\t|\tArticulo\t\t|");
 			for (LineaFactura lineaFactura : lineaFacturas) {
 				pw.println("\t" + lineaFactura.getNumero() + "\t\t"
-						+ lineaFactura.getCantidad() + "\t\t\t" + lineaFactura.precioTotal() + 
+						+ lineaFactura.getCantidad() + "\t\t\t" + new DecimalFormat("#.00").format(lineaFactura.precioTotal()) + 
 						"\t\t\t" + lineaFactura.getArticulo().getName());
 			}
 			pw.println("------------------------------------------------------------------------------------------------");
-			pw.println("Precio total: " + precioTotal());
+			pw.println("Precio total: " + new DecimalFormat("#.00").format(precioTotal()));
 				
 			pw.close();
 			
