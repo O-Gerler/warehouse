@@ -183,7 +183,7 @@ public class Factura {
 		System.out.println("Articulos que podrian interesarte: ");
 		almacen.equivalentes(lineaFacturas.get(numLinea-2).getArticulo().getCode())
 			.stream()
-			.forEach(art -> System.out.println("Nombre:"+art.getName()+", codigo:"+art.getCode()
+			.forEach(art -> System.out.println("Nombre: "+art.getName()+", codigo:"+art.getCode()
 			+", precio:"+ new DecimalFormat("#.00").format(art.getPrecio())));
 	}
 	
@@ -211,7 +211,7 @@ public class Factura {
 		if (file.exists()) {
 			do {
 				System.out.println("El archivo ya existe\nCambiando nombre...");
-				nombreFichero = String.valueOf(numFichero).concat(nombreFichero);
+				nombreFichero = numFichero + "_" + (nombreFichero);
 				numFichero++;
 			}while(new File("src/facturas/"+nombreFichero).exists());
 			
