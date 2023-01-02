@@ -63,7 +63,7 @@ public class Factura {
 			art = recibirCodigoArticulo(almacen, sc);
 			int cantidadArticulo = recibirCantidadArticulo(almacen,sc,art);
 			
-			System.out.println(numLinea + ";" + art.getName()+ ";" + cantidadArticulo);
+			System.out.println("Numero de linea:"+numLinea + ", nombre: " + art.getName()+ ", cantidad: " + cantidadArticulo);
 			System.out.print("Confirmar [S/n]: ");
 			String continuarCompra = sc.nextLine();
 			
