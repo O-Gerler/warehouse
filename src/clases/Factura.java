@@ -58,25 +58,38 @@ public class Factura {
 		boolean agregarLinea = false;
 		
 		do {
+			agregarLinea = false;
 			Articulo art = null;
 			LineaFactura lineaFactura = new LineaFactura();
 			art = recibirCodigoArticulo(almacen, sc);
 			int cantidadArticulo = recibirCantidadArticulo(almacen,sc,art);
+			int indice = comprobarSiArticuloSeCompro(art);
 			
-			System.out.println("Numero de linea:"+numLinea + ", nombre: " + art.getName()+ ", cantidad: " + cantidadArticulo);
+			if (indice == -1) {
+				System.out.println("Numero de linea: "+numLinea + ", nombre: " + art.getName()+ ", cantidad: " + cantidadArticulo);
+			}else {
+				System.out.println("Modificando linea...");
+				System.out.println("Numero de linea: "+(numLinea-1) + ", nombre: " + art.getName()+ 
+						", cantidad: " + (cantidadArticulo + lineaFacturas.get(indice).getCantidad()));
+			}
+			
 			System.out.print("Confirmar [S/n]: ");
 			String continuarCompra = sc.nextLine();
 			
 			if (!continuarCompra.toLowerCase().equals("n")) {
-				lineaFactura.setNumero(numLinea);
-				lineaFactura.setArticulo(art);
-				lineaFactura.setCantidad(cantidadArticulo);
-				lineaFacturas.add(lineaFactura);
-				System.out.println("Linea agregada");
-				numLinea++;
+				
+				if (indice == -1) {
+					lineaFactura.setNumero(numLinea);
+					lineaFactura.setArticulo(art);
+					lineaFactura.setCantidad(cantidadArticulo);
+					lineaFacturas.add(lineaFactura);
+					System.out.println("Linea agregada");
+					numLinea++;
+				} else {
+					lineaFacturas.get(indice).setCantidad(cantidadArticulo + lineaFacturas.get(indice).getCantidad());
+				}
+				
 				agregarLinea = true;
-			}else {
-				agregarLinea = false;
 			}
 			
 			if (agregarLinea) {
@@ -87,6 +100,16 @@ public class Factura {
 			}
 			
 		}while(agregarLinea);
+	}
+	
+	private int comprobarSiArticuloSeCompro(Articulo art) {
+		int i = 0;
+		for (LineaFactura lineaFactura : lineaFacturas) {
+			if (lineaFactura.getArticulo().getCode().equals(art.getCode())) 
+				return i;
+			i++;
+		}
+		return -1;
 	}
 
 	private int recibirCantidadArticulo(Almacen almacen, Scanner sc, Articulo art) {
