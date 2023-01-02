@@ -156,6 +156,13 @@ public class Factura {
 		return precioTotal * IVA;
 	}
 	
+	public void mostrarArticulosEquivalentes(Almacen almacen) {
+		System.out.println("Articulos que podrian interesarte: ");
+		almacen.equivalentes(lineaFacturas.get(numLinea - 1).getArticulo().getCode())
+			.stream()
+			.forEach(art -> System.out.println("Nombre:"+art.getName()+", codigo:"+art.getCode()+", precio:"+art.getPrecio()));
+	}
+	
 	public void mostrarEnPantalla() {
 		System.out.println("-------------------------------FACTURA-------------------------------");
 		System.out.println("Numero de factura: \t\t\t" + this.numero);
