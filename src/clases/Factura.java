@@ -77,7 +77,6 @@ public class Factura {
 			String continuarCompra = sc.nextLine();
 			
 			if (!continuarCompra.toLowerCase().equals("n")) {
-				
 				if (indice == -1) {
 					lineaFactura.setNumero(numLinea);
 					lineaFactura.setArticulo(art);
@@ -184,7 +183,8 @@ public class Factura {
 		System.out.println("Articulos que podrian interesarte: ");
 		almacen.equivalentes(lineaFacturas.get(numLinea-2).getArticulo().getCode())
 			.stream()
-			.forEach(art -> System.out.println("Nombre:"+art.getName()+", codigo:"+art.getCode()+", precio:"+art.getPrecio()));
+			.forEach(art -> System.out.println("Nombre:"+art.getName()+", codigo:"+art.getCode()
+			+", precio:"+ new DecimalFormat("#.00").format(art.getPrecio())));
 	}
 	
 	public void mostrarEnPantalla() {
