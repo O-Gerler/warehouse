@@ -28,8 +28,9 @@ public class GestorAlmacen {
 		
 		final int MENU_FACTURA_ADD_LINEA =1;
 		final int MENU_FACTURA_ELIMINAR_LINEA =2;
-		final int MENU_FACTURA_MOSTRAR_EN_PANTALLA =3;
-		final int MENU_FACTURA_GUARDAR_EN_FICHERO =4;
+		final int MENU_FACTURA_MOSTRAR_SUGERENCIAS =3;
+		final int MENU_FACTURA_MOSTRAR_EN_PANTALLA =4;
+		final int MENU_FACTURA_GUARDAR_EN_FICHERO =5;
 		final int MENU_FACTURA_SALIR =0;
 		
 		int opcionMainMenu = -1;
@@ -46,9 +47,8 @@ public class GestorAlmacen {
 				Factura factura = crearFacturaConDatos(sc);
 				int opcionMenuFactura = -1;
 				do {
-					mostrarOpcionesMenuFactura(MENU_FACTURA_ADD_LINEA, MENU_FACTURA_ELIMINAR_LINEA, 
-							MENU_FACTURA_MOSTRAR_EN_PANTALLA, MENU_FACTURA_GUARDAR_EN_FICHERO,
-							MENU_FACTURA_SALIR);
+					mostrarOpcionesMenuFactura(MENU_FACTURA_ADD_LINEA, MENU_FACTURA_ELIMINAR_LINEA, MENU_FACTURA_MOSTRAR_SUGERENCIAS,
+							MENU_FACTURA_MOSTRAR_EN_PANTALLA, MENU_FACTURA_GUARDAR_EN_FICHERO,MENU_FACTURA_SALIR);
 					opcionMenuFactura = elegirOpcion(opcionMenuFactura, sc);
 					switch(opcionMenuFactura) {
 					case MENU_FACTURA_ADD_LINEA:
@@ -56,6 +56,11 @@ public class GestorAlmacen {
 						break;
 					case MENU_FACTURA_ELIMINAR_LINEA:
 						factura.eliminarLinea(opcionMenuFactura, sc);
+						break;
+					case MENU_FACTURA_MOSTRAR_SUGERENCIAS:
+						if (factura.lineaFacturas.size() > 0) {
+							factura.mostrarArticulosEquivalentes(almacen);
+						}
 						break;
 					case MENU_FACTURA_MOSTRAR_EN_PANTALLA:
 						factura.mostrarEnPantalla();
@@ -217,11 +222,12 @@ public class GestorAlmacen {
 		return opcionMenu;
 	}
 
-	private void mostrarOpcionesMenuFactura(int mENU_FACTURA_ADD_LINEA, int mENU_FACTURA_ELIMINAR_LINEA,
+	private void mostrarOpcionesMenuFactura(int mENU_FACTURA_ADD_LINEA, int mENU_FACTURA_ELIMINAR_LINEA,int mENU_FACTURA_MOSTRAR_EQUIVALENTES,
 			int mENU_FACTURA_MOSTRAR_EN_PANTALLA, int mENU_FACTURA_GUARDAR_EN_FICHERO, int mENU_FACTURA_SALIR) {
 		System.out.println("=====================MENU-FACTURA=====================");
 		System.out.println(mENU_FACTURA_ADD_LINEA + ".- Agregar linea de factura");
 		System.out.println(mENU_FACTURA_ELIMINAR_LINEA + ".- Eliminar linea de factura");
+		System.out.println(mENU_FACTURA_MOSTRAR_EQUIVALENTES + ".- Mostrar articulos equivalentes");
 		System.out.println(mENU_FACTURA_MOSTRAR_EN_PANTALLA + ".- Mostrar factura en pantalla");
 		System.out.println(mENU_FACTURA_GUARDAR_EN_FICHERO + ".- Guardar factura");
 		System.out.println(mENU_FACTURA_SALIR + ".- Salir");
