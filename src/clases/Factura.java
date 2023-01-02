@@ -69,7 +69,7 @@ public class Factura {
 				System.out.println("Numero de linea: "+numLinea + ", nombre: " + art.getName()+ ", cantidad: " + cantidadArticulo);
 			}else {
 				System.out.println("Modificando linea...");
-				System.out.println("Numero de linea: "+(numLinea-1) + ", nombre: " + art.getName()+ 
+				System.out.println("Numero de linea: "+ lineaFacturas.get(indice).getNumero() + ", nombre: " + art.getName()+ 
 						", cantidad: " + (cantidadArticulo + lineaFacturas.get(indice).getCantidad()));
 			}
 			
