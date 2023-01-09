@@ -16,6 +16,7 @@ public class Almacen {
 
 	public void cargarDatos() throws FileNotFoundException {
 		File file = new File("src/datosFichero/datos.txt");
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(file);
 		
 		while(sc.hasNextLine()) {
@@ -72,11 +73,11 @@ public class Almacen {
 		return false;
 	}
 	
-	public ArrayList<Articulo> stockJusto(int stock) {
+	public ArrayList<Articulo> stockJusto() {
 		ArrayList<Articulo> articulosStockJusto = new ArrayList<>();
 		
 		for (Articulo articulo : articulos) {
-			if (articulo.getStock() == stock) {
+			if (articulo.getStock() <= 10) {
 				articulosStockJusto.add(articulo);
 			}
 		}
