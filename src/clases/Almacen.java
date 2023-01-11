@@ -86,14 +86,8 @@ public class Almacen {
 		return articulo;
 	}
 	
-	public boolean disponibilidad(String codigoProducto, int stock) {
-		for (Articulo articulo : articulos) {
-			if (codigoProducto.equals(articulo.getCode()) && stock <= articulo.getStock()) {
-				return true;
-			}
-		}
-		
-		return false;
+	public boolean disponibilidad(String codigoProducto, int cantidad) {
+		return articulo(codigoProducto) != null && articulo(codigoProducto).getStock() > cantidad ? true : false;
 	}
 	
 	public ArrayList<Articulo> equivalentes(String codigoArticulo) {
