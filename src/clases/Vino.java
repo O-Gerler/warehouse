@@ -67,10 +67,7 @@ public class Vino extends Articulo implements Alcoholico{
 
 	@Override
 	public boolean esFuerte() {
-		if (this.gradosAlcohol > 13.5) 
-			return true;
-		
-		return false;
+		return this.gradosAlcohol > 13.5 ? true : false;
 	}
 
 	@Override
