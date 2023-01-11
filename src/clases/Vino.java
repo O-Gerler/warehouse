@@ -94,11 +94,7 @@ public class Vino extends Articulo implements Alcoholico{
 
 	@Override
 	public boolean esSaludable() {
-		if (this.origen.trim().toLowerCase().equals("navarra"))
-			return true;
-		
-		
-		return false;
+		return this.origen.trim().toLowerCase().equals("navarra") ? true :false;
 	}
 
 	@Override
