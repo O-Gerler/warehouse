@@ -55,13 +55,7 @@ public class Almacen {
 	}
 	
 	public double precio(String codigoProducto) {
-		for (Articulo articulo : articulos) {
-			if (codigoProducto.equals(articulo.getCode())) {
-				return articulo.getPrecio();
-				}
-		}
-		
-		return 0;
+		return articulo(codigoProducto) != null ? articulo(codigoProducto).getPrecio() : null;
 	}
 	
 	public boolean hayStock(String codigoProducto) {
