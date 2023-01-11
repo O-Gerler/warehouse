@@ -66,10 +66,10 @@ public class Cerveza extends Articulo implements Alcoholico{
 		}else if (this.gradosAlcohol < 5 && this.gradosAlcohol >= 2) {
 			return 1.423;
 		}else if (this.gradosAlcohol < 7 && this.gradosAlcohol >= 5) {
-			return 1.823;
+			return 1.623;
 		}
 		
-		return 2.356;
+		return 1.823;
 	}
 
 	@Override
