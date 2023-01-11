@@ -59,12 +59,7 @@ public class Almacen {
 	}
 	
 	public boolean hayStock(String codigoProducto) {
-		for (Articulo articulo : articulos) {
-			if (codigoProducto.equals(articulo.getCode()) && articulo.getStock() > 0) {
-				return true;
-			}
-		}
-		return false;
+		return articulo(codigoProducto) != null && articulo(codigoProducto).getStock() > 0 ? true : false;
 	}
 	
 	public ArrayList<Articulo> stockJusto() {
