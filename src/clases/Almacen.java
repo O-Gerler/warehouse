@@ -93,9 +93,11 @@ public class Almacen {
 	public ArrayList<Articulo> equivalentes(String codigoArticulo) {
 		ArrayList<Articulo> articulosEquivalentes = new ArrayList<>();
 		Articulo articulo = this.articulo(codigoArticulo);
+		double precioMax = articulo.getPrecio() + 0.20;
+		double precioMin = articulo.getPrecio() - 0.20;
 		
 		for (Articulo art : articulos) {
-			if (!art.getCode().equals(articulo.getCode()) && art.getPrecio() <= (articulo.getPrecio() + 0.20) && art.getPrecio() >= (articulo.getPrecio() - 0.20)) {
+			if (!art.getCode().equals(articulo.getCode()) && articulo.getCode().charAt(0) == art.getCode().charAt(0) &&art.getPrecio() <= precioMax && art.getPrecio() >= precioMin) {
 				articulosEquivalentes.add(art);
 			}
 		}
