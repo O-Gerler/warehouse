@@ -88,10 +88,7 @@ public class Cerveza extends Articulo implements Alcoholico{
 
 	@Override
 	public boolean esSaludable() {
-		if(this.origen.trim().toLowerCase().equals("galicia"))
-			return true;
-		
-		return false;
+		return this.cereales.trim().toLowerCase().equals("lupulo") ? true : false;
 	}
 
 	@Override
