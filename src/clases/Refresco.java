@@ -68,10 +68,7 @@ public class Refresco extends Articulo{
 
 	@Override
 	public boolean esSaludable() {
-		if (this.cantidadAzucar < 20) 
-			return true;
-		
-		return false;
+		return this.cantidadAzucar < 20 ? true : false;
 	}
 
 	@Override
