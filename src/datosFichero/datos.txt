@@ -2,8 +2,8 @@ fanta;11;fanta;33;0.55;20;naranja;true;true;15
 fanta;12;fanta;33;0.55;27;limon;true;true;13
 fanta;13;fanta;33;0.55;11;pina;true;true;23
 vino;21;patarrero;100;1.23;12;morado;espania;2022;normal;9.5
-vino;22;tinto;100;1.72;20;morado;espania;2019;normal;13.2
+vino;22;tinto;100;1.72;20;morado;navarra;2019;normal;13.2
 vino;23;blanco;100;1.52;8;blanco;espania;2021;normal;11.3
 cerveza;31;estrella galicia;33;0.72;50;galicia;cebada y malta;5
 cerveza;32;estrella dam;33;0.52;47;madrid;cebada;3.5
-cerveza;33;mecadona;33;0.23;23;valencia;cebada;3.4
+cerveza;33;mecadona;33;0.23;23;valencia;lupulo;3.4
