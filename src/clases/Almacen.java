@@ -109,7 +109,7 @@ public class Almacen {
 		ArrayList<Articulo> articulosOrdenadosPorPrecio = articulos;
 		
 		if (orden.equals("descendente")) {
-			articulosOrdenadosPorPrecio.sort((arg0, arg1) ->  arg0.getPrecio() - arg1.getPrecio() > 0 ? 1 : -1) ;
+			articulosOrdenadosPorPrecio.sort((arg0, arg1) ->  arg0.getPrecio() - arg1.getPrecio() < 0 ? 1 : -1) ;
 		}else {
 			articulosOrdenadosPorPrecio.sort((arg0, arg1) -> arg1.getPrecio() - arg0.getPrecio() > 0 ? 1 : -1) ;
 		}
