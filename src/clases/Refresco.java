@@ -52,11 +52,6 @@ public class Refresco extends Articulo{
 	public void setCantidadAzucar(int cantidadAzucar) {
 		this.cantidadAzucar = cantidadAzucar;
 	}
-	
-	public void visualizarPropiedades() {
-		System.out.println(super.name + " es un refresco de sabor " + this.sabor + (zumo ? ", es" : ",no es") + " un zumo, " + 
-				(this.gaseoso ? "es gaseoso" : "no es gaseoso") + "  tiene " + this.cantidadAzucar + "g de azucar");
-	}
 
 	@Override
 	public void visualizarArticulo() {
