@@ -55,7 +55,7 @@ public class Factura {
 	}
 	
 	public void addLinea(Almacen almacen, Scanner sc) {
-		boolean agregarLinea = false;
+		boolean agregarLinea;
 		
 		do {
 			agregarLinea = false;
