@@ -237,11 +237,7 @@ public class Factura {
 			pw.close();
 			
 			for (LineaFactura lineaFactura : lineaFacturas) {
-				for (Articulo articulo : almacen.getArticulos()) {
-					if (articulo.code.equals(lineaFactura.getArticulo().getCode())) {
-						articulo.disminuirStock(lineaFactura.getCantidad());
-					}
-				}
+				lineaFactura.getArticulo().disminuirStock(lineaFactura.getCantidad());
 			}
 		} catch (Exception e) {
 			System.out.println("No se pudo crear el archivo");
